@@ -31,9 +31,24 @@ def create_svm(pos_dir, neg_dir):
     svm.train(training_mat_float, labels, params=svm_params)
 
     # test
-    test_img = np.float32(training_mat)
+    # test_img = np.float32(training_mat)
+    # predic_mat = svm.predict_all(test_img)
+    # predic_mat_1d = predic_mat.ravel()
+    # percentage = percentage_match(labels, predic_mat_1d)
+    # print "MATCH RATE = " + str(percentage)
+    test_data = create_matrix("res/wool/test/", "res/leather/test/")
+    # NOTE: the 'percentage_match' function assumes that both test and training matrices are of thes ame size 
+    # which is not we want?  so this is a big TODO 
+    # initially i separated it 40-10 but i copied 30 from the training to the test and i get 88.75% match
+    # i honestly dont' really get how the algorithm works but yea
+    # something to look in to later i guess
+    test_mat = test_data[0]
+    test_img = np.float32(test_mat)
     predic_mat = svm.predict_all(test_img)
+    print predic_mat.size
     predic_mat_1d = predic_mat.ravel()
+    print predic_mat_1d
+    print labels
     percentage = percentage_match(labels, predic_mat_1d)
     print "MATCH RATE = " + str(percentage)
 
@@ -42,7 +57,7 @@ def create_svm(pos_dir, neg_dir):
 
 pos_dir = "res/wool/training/"
 neg_dir = "res/leather/training/"
-#resize(neg_dir, neg_dir, 200, 200)
+#resize("res/leather/test/", "res/leather/test/", 200, 200)
 svm_dir = "res/svm/"
 svm = create_svm(pos_dir, neg_dir)
 svm.save(svm_dir + "wool.data")
