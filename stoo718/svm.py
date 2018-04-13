@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-from helper_functions import create_matrix, percentage_match, resize
+from helper_functions import create_matrix, percentage_match, resize, create_test_matrix
 from PIL import Image, ImageTk
 
 def create_svm(pos_dir, neg_dir):
@@ -36,7 +36,7 @@ def create_svm(pos_dir, neg_dir):
     # predic_mat_1d = predic_mat.ravel()
     # percentage = percentage_match(labels, predic_mat_1d)
     # print "MATCH RATE = " + str(percentage)
-    test_data = create_matrix("res/wool/test/", "res/leather/test/")
+    test_data = create_test_matrix("res/wool/test/", "res/leather/test/")
     # NOTE: the 'percentage_match' function assumes that both test and training matrices are of thes ame size 
     # which is not we want?  so this is a big TODO 
     # initially i separated it 40-10 but i copied 30 from the training to the test and i get 88.75% match
