@@ -1,62 +1,62 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 import scipy.io
+import time
+from datetime import datetime
 
-# Load dataset in .mat format
-im_dataset = scipy.io.loadmat('test-200p-fixed-index.mat')
+start = time.clock()
+#Set parameters
+dataset_used = 'test-200p-fixed-index.mat'
+c_test_size = 0.3
+c_solver = 'liblinear'
+#Load dataset in .mat format
+im_dataset = scipy.io.loadmat(dataset_used)
 
-print(im_dataset['data'].shape)
-print(im_dataset['data'])
-print(im_dataset['label'].shape)
-print(im_dataset['label'])
+print('\n======PREVIEW OF DATASET======\n')
+#Print out dataset preview and labels
+print('dimension of data: ' + str(im_dataset['data'].shape))
+print('preview of data: \n' + str(im_dataset['data']))
+print('dimension of label: ' + str(im_dataset['label'].shape))
+print('1 = leather 0 = wool')
+print('preview of label: \n' + str(im_dataset['label']))
 
-# Splitting Data into Training and Test Sets
 from sklearn.model_selection import train_test_split
-#get_ipython().magic('matplotlib inline')
 
-# Reshape the array to solve length issue before splitting the dataset into training and testing
+#Reshape the array to solve length issue before splitting the dataset into training and testing
 im_dataset['label'] = im_dataset['label'].reshape(im_dataset['label'].shape[1:])
-print(im_dataset['data'].shape)
-print(im_dataset['label'].shape)
 
-# test_size: what proportion of original data is used for test set
-train_img, test_img, train_lbl, test_lbl = train_test_split(im_dataset['data'], im_dataset['label'], test_size=1/7.0, random_state=0)
+print('\n=======RESHAPED DATASET=======\n')
+#Print out dataset 'data' and 'label' sizes
+print('dimension of data after reshaping: ' + str(im_dataset['data'].shape))
+print('dimension of label after reshaping: ' + str(im_dataset['label'].shape))
 
-# Showing Training Digits and Labels
-plt.figure(figsize=(20,4))
-for index, (image, label) in enumerate(zip(train_img[0:5], train_lbl[0:5])):
-    plt.subplot(1, 5, index + 1)
-    plt.imshow(np.reshape(image, (200,200)), cmap=plt.cm.gray)
-    plt.title('Training: %i\n' % label, fontsize = 20)
+#Splitting Data into Training and Test Sets (set train-test parameters)
+train_img, test_img, train_lbl, test_lbl = train_test_split(im_dataset['data'], im_dataset['label'], test_size=c_test_size, random_state=0)
 
-
-print(train_img[1])
-
-# Import Logistic Regression model
+#Import Logistic Regression model
 from sklearn.linear_model import LogisticRegression 
-# Step 2: Make an instance of the Model
+logisticRegr = LogisticRegression(solver = c_solver)
 
-# all parameters not specified are set to their defaults, default solver is incredibly slow thats why we change it
-logisticRegr = LogisticRegression(solver = 'lbfgs')
-
-# Step 3: Training the model on the data, storing the information learned from the data
-# Model is learning the relationship between x (digits) and y (labels)
+#Model is learning the relationship between x (digits) and y (labels)
 logisticRegr.fit(train_img, train_lbl)
 
-# Step 4: Predict the labels of new data (new images)
-# Uses the information the model learned during the model training process
-
-# Returns a NumPy Array
-# Predict for One Observation (image)
+#Model predict the labels of new data (new images) using the information learned during training process
 logisticRegr.predict(test_img[0].reshape(1,-1))
 
-# Predict for Multiple Observations (images) at Once
+#Predict for Multiple Observations (images) at Once
 logisticRegr.predict(test_img[0:10])
 
-# Measuring Model Performance
-# accuracy (fraction of correct predictions): correct predictions / total number of data points
+print('\n============RESULTS============\n')
+#Measuring Model Performance - accuracy (fraction of correct predictions): correct predictions / total number of data points
 score = logisticRegr.score(test_img, test_lbl)
-print(score)
+print('dataset file used: ' + str(dataset_used))
+print('solver used: ' + str(c_solver))
+print('test_size: ' + str(c_test_size))
+print('accuracy: ' + str(score))
+print('time taken(s): ' + str(time.clock() - start))
+print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+
+
 
 # [Logistic Regression Sklearn Documentation](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) <br>
 # One thing I like to mention is the importance of parameter tuning. While it may not have mattered much for the toy digits dataset, it can make a major difference on larger and more complex datasets you have. Please see the parameter: solver
