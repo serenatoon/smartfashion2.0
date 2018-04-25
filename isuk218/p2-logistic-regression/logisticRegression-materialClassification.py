@@ -61,7 +61,6 @@ print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 # [Logistic Regression Sklearn Documentation](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) <br>
 # One thing I like to mention is the importance of parameter tuning. While it may not have mattered much for the toy digits dataset, it can make a major difference on larger and more complex datasets you have. Please see the parameter: solver
 
-'''
 # ## Confusion Matrix
 # Used for Confusion Matrix
 from sklearn import metrics
@@ -70,24 +69,15 @@ import seaborn as sns
 
 # Note: Seaborn needs to be installed for this portion 
 
-# In[41]:
 
-# !conda install seaborn -y
-
-
-# In[42]:
+!conda install seaborn -y
 
 # Make predictions on test data
 predictions = logisticRegr.predict(test_img)
 
-
-# In[43]:
-
 cm = metrics.confusion_matrix(test_lbl, predictions)
 cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
-
-# In[44]:
 
 plt.figure(figsize=(9,9))
 sns.heatmap(cm_normalized, annot=True, fmt=".3f", linewidths=.5, square = True, cmap = 'Blues_r');
@@ -99,7 +89,6 @@ plt.title(all_sample_title, size = 15);
 
 # ## Display Misclassified images with Predicted Labels
 
-# In[45]:
 
 index = 0
 misclassifiedIndexes = []
@@ -149,4 +138,4 @@ axes[1].set_xlabel('Predicted label', fontsize = 30);
 
 # if this tutorial doesn't cover what you are looking for, please leave a comment on the youtube video and I will try to cover what you are interested in. 
 
-# [youtube video](https://www.youtube.com/watch?v=71iXeuKFcQM)'''
+# [youtube video](https://www.youtube.com/watch?v=71iXeuKFcQM)
