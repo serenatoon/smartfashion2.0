@@ -61,17 +61,17 @@ def get_features(images):
     return features  # return list of feature vectors
 
 
-def classify(pos_dir, neg_dir):
+def classify(dir):
     # load data
-    positive = glob.glob(pos_dir)
-    negative = glob.glob(neg_dir)
+    images = glob.glob(dir)
     pos_list = []
     neg_list = []
 
-    for image in positive:
-        pos_list.append(image)
-    for image in negative:
-        neg_list.append(image)
+    for image in images:
+        if 'wool' in image:
+            pos_list.append(image)
+        elif 'leather' in image:
+            neg_list.append(image)
 
     # get wool features
     wool_features = get_features(pos_list)
@@ -87,7 +87,7 @@ def classify(pos_dir, neg_dir):
     y = np.hstack((np.ones(len(wool_features)), np.zeros(len(leather_features))))
 
     # split data into training and test sets
-    x_train, x_test, y_train, y_test = train_test_split(scaled_x, y, test_size=0.2, random_state=22)
+    x_train, x_test, y_train, y_test = train_test_split(scaled_x, y, test_size=0.2)
     svc = LinearSVC(loss='hinge')
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
@@ -97,6 +97,8 @@ def classify(pos_dir, neg_dir):
 
 
 
-pos_dir = "res/wool/*"
-neg_dir = "res/leather/*"
-classify(pos_dir, neg_dir)
+# pos_dir = "res/wool/*"
+# neg_dir = "res/leather/*"
+new_dir = "res/new/*"
+classify(new_dir)
+#classify(pos_dir, neg_dir)
