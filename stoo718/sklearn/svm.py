@@ -92,13 +92,26 @@ def classify(dir):
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
     t2 = time.time()
-    print(round(t2-t0, 2), 'seconds to train svc')
-    print('accuracy of svc: ', round(svc.score(x_test, y_test,), 4))
+    #print(round(t2-t0, 2), 'seconds to train svc')
+    #print('accuracy of svc: ', round(svc.score(x_test, y_test,), 4))
+
+    return round(svc.score(x_test, y_test,), 4)
+
+
+def iterate(iterations):
+    avg = 0.000
+    t0 = time.time()
+    for _ in range(iterations):
+        avg += classify(new_dir)
+    t2 = time.time()
+
+    print('Average accuracy over ' + str(iterations) + ' iterations: ' + str(avg/iterations))
+    print('Time taken: ' + str(round(t2-t0, 2)) + ' seconds')
 
 
 
 # pos_dir = "res/wool/*"
 # neg_dir = "res/leather/*"
 new_dir = "res/new/*"
-classify(new_dir)
+iterate(10)
 #classify(pos_dir, neg_dir)
