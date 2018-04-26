@@ -6,13 +6,16 @@ from datetime import datetime
 
 start = time.clock()
 #Set parameters
-dataset_used = 'dataset-v3-bw.mat'
+dataset_used = 'dataset-v3-bw-1.mat'
 c_test_size = 0.3
 c_solver = 'lbfgs'
-num_iteration = 10
-iteration_count = 0
 #Load dataset in .mat format
 im_dataset = scipy.io.loadmat(dataset_used)
+
+#Import Logistic Regression model
+from sklearn.linear_model import LogisticRegression
+
+
 
 print('\n======PREVIEW OF DATASET======\n')
 #Print out dataset preview and labels
@@ -26,7 +29,7 @@ from sklearn.model_selection import train_test_split
 
 #Reshape the array to solve length issue before splitting the dataset into training and testing
 im_dataset['label'] = im_dataset['label'].reshape(im_dataset['label'].shape[1:])
-
+'''
 print('\n=======RESHAPED DATASET=======\n')
 #Print out dataset 'data' and 'label' sizes
 print('dimension of data after reshaping: ' + str(im_dataset['data'].shape))
@@ -35,8 +38,7 @@ print('dimension of label after reshaping: ' + str(im_dataset['label'].shape))
 #Splitting Data into Training and Test Sets (set train-test parameters)
 train_img, test_img, train_lbl, test_lbl = train_test_split(im_dataset['data'], im_dataset['label'], test_size=c_test_size, random_state=0)
 
-#Import Logistic Regression model
-from sklearn.linear_model import LogisticRegression 
+
 logisticRegr = LogisticRegression(solver = c_solver)
 
 #Model is learning the relationship between x (digits) and y (labels)
@@ -57,6 +59,13 @@ print('test_size: ' + str(c_test_size))
 print('accuracy: ' + str(score))
 print('time taken(s): ' + str(time.clock() - start))
 print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+'''
+from sklearn import metrics, cross_validation
+
+predicted = cross_validation.cross_val_predict(LogisticRegression(),im_dataset['data'],im_dataset['label'], cv=10)
+print metrics.accuracy_score(im_dataset['label'],predicted)
+
+print metrics.classification_report(im_dataset['label'],predicted)
 
 
 '''

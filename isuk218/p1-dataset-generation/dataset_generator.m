@@ -44,7 +44,6 @@ for k = 1:total_images
         end
     end
     
-    %A = imresize(image_data,[size_of_photo size_of_photo]);
     C = rgb2gray(image_data);
     
     for col = 1:size_of_photo
