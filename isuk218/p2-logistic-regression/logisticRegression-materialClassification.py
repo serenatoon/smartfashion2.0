@@ -6,9 +6,11 @@ from datetime import datetime
 
 start = time.clock()
 #Set parameters
-dataset_used = 'test-200p-fixed-index.mat'
+dataset_used = 'dataset-v3-bw.mat'
 c_test_size = 0.3
-c_solver = 'liblinear'
+c_solver = 'lbfgs'
+num_iteration = 10
+iteration_count = 0
 #Load dataset in .mat format
 im_dataset = scipy.io.loadmat(dataset_used)
 
@@ -57,7 +59,7 @@ print('time taken(s): ' + str(time.clock() - start))
 print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
 
 
-
+'''
 # [Logistic Regression Sklearn Documentation](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) <br>
 # One thing I like to mention is the importance of parameter tuning. While it may not have mattered much for the toy digits dataset, it can make a major difference on larger and more complex datasets you have. Please see the parameter: solver
 
@@ -139,3 +141,4 @@ axes[1].set_xlabel('Predicted label', fontsize = 30);
 # if this tutorial doesn't cover what you are looking for, please leave a comment on the youtube video and I will try to cover what you are interested in. 
 
 # [youtube video](https://www.youtube.com/watch?v=71iXeuKFcQM)
+'''
