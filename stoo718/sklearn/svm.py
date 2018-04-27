@@ -8,6 +8,7 @@ from skopt import gp_minimize
 import glob
 from datetime import datetime
 import time
+from sklearn.metrics import confusion_matrix
 
 
 # feature extraction
@@ -88,10 +89,17 @@ def classify(dir):
 
     # split data into training and test sets
     x_train, x_test, y_train, y_test = train_test_split(scaled_x, y, test_size=0.2)
+    # print scaled_x.shape
+    # print y.shape
     svc = LinearSVC(loss='hinge')
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
-    print svc.predict(x_test[0:26])
+
+    # confusion matrix 
+    prediction_label = svc.predict(x_test[0:52])
+    #print y_test.shape
+    print confusion_matrix(y_test, prediction_label)
+
     t2 = time.time()
     print(round(t2-t0, 2), 'seconds to train svc')
     print('accuracy of svc: ', round(svc.score(x_test, y_test,), 4))
@@ -114,5 +122,5 @@ def iterate(iterations):
 # pos_dir = "res/wool/*"
 # neg_dir = "res/leather/*"
 new_dir = "res/new/*"
-iterate(500)
+iterate(1)
 #classify(pos_dir, neg_dir)
