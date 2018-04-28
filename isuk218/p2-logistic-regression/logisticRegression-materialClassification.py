@@ -5,70 +5,78 @@ import time
 from datetime import datetime
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-#from sklearn import metrics, cross_validation
+#from sklearn.metrics import cross_validation
 from sklearn.metrics import confusion_matrix
 
-start = time.clock()
-#Set parameters
 dataset_used = 'dataset-v3-bw-1.mat'
 c_test_size = 0.3
-c_solver = 'lbfgs'
-#Load dataset in .mat format
-im_dataset = scipy.io.loadmat(dataset_used)
-'''
-print('\n======PREVIEW OF DATASET======\n')
-#Print out dataset preview and labels
-print('dimension of data: ' + str(im_dataset['data'].shape))
-#print('preview of data: \n' + str(im_dataset['data']))
-#print('dimension of label: ' + str(im_dataset['label'].shape))
-#print('1 = leather 0 = wool')
-#print('preview of label: \n' + str(im_dataset['label']))
-'''
+solver_type = 'lbfgs'
 
-#Reshape the array to solve length issue before splitting the dataset into training and testing
-im_dataset['label'] = im_dataset['label'].reshape(im_dataset['label'].shape[1:])
+def initialise:
+	#start timing measurement
+	start = time.clock()
 
-#print('\n=======RESHAPED DATASET=======\n')
-#Print out dataset 'data' and 'label' sizes
-#print('dimension of data after reshaping: ' + str(im_dataset['data'].shape))
-#print('dimension of label after reshaping: ' + str(im_dataset['label'].shape))
+def loadDataset(dataset_used):
+	#Load dataset in .mat format
+	im_dataset = scipy.io.loadmat(dataset_used)
 
-#Splitting Data into Training and Test Sets (set train-test parameters)
-train_img, test_img, train_lbl, test_lbl = train_test_split(im_dataset['data'], im_dataset['label'], test_size=c_test_size)
+def reshapeDataset:
+	#Reshape the array to solve length issue before splitting the dataset into training and testing
+	im_dataset['label'] = im_dataset['label'].reshape(im_dataset['label'].shape[1:])
 
-logisticRegr = LogisticRegression(solver = c_solver)
+def logisticRegression:
+	#Splitting Data into Training and Test Sets (set train-test parameters)
+	train_img, test_img, train_lbl, test_lbl = train_test_split(im_dataset['data'], im_dataset['label'], test_size=c_test_size)
 
-#Model is learning the relationship between x (digits) and y (labels)
-logisticRegr.fit(train_img, train_lbl)
+	logisticRegr = LogisticRegression(solver = solver_type)
 
-#Model predict the labels of new data (new images) using the information learned during training process
-#print(logisticRegr.predict(test_img[38].reshape(1,-1)))
+	#Model is learning the relationship between x (digits) and y (labels)
+	logisticRegr.fit(train_img, train_lbl)
+	#Model predict the labels of new data (new images) using the information learned during training process
+	logisticRegr.predict(test_img[38].reshape(1,-1))
+	#Predict for Multiple Observations (images) at Once
+	prediction_label = logisticRegr.predict(test_img[0:39])
+	#Measuring Model Performance - accuracy (fraction of correct predictions): correct predictions / total number of data points
+	score = logisticRegr.score(test_img, test_lbl)
 
-print(im_dataset['data'].shape)
-print(im_dataset['label'].shape)
+def crossValidation:
+	predicted = cross_validation.cross_val_predict(LogisticRegression(),im_dataset['data'],im_dataset['label'], cv=10)
+	#print metrics.accuracy_score(im_dataset['label'],predicted)
+	#print metrics.classification_report(im_dataset['label'],predicted)
 
-print(test_lbl)
-#Predict for Multiple Observations (images) at Once
-prediction_label = logisticRegr.predict(test_img[0:39])
-print(prediction_label)
+def confusionMatrix:
+	confusion_matrix(test_lbl, prediction_label,labels=[0,1])
 
-print('\n============RESULTS============\n')
-#Measuring Model Performance - accuracy (fraction of correct predictions): correct predictions / total number of data points
-score = logisticRegr.score(test_img, test_lbl)
-print('dataset file used: ' + str(dataset_used))
-print('solver used: ' + str(c_solver))
-print('test_size: ' + str(c_test_size))
-print('accuracy: ' + str(score))
-print('time taken(s): ' + str(time.clock() - start))
-print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+def printFunction:
+	print('\n======PREVIEW OF DATASET======\n')
+	#Print out dataset preview and labels
+	print('dimension of data: ' + str(im_dataset['data'].shape))
+	#print('preview of data: \n' + str(im_dataset['data']))
+	#print('dimension of label: ' + str(im_dataset['label'].shape))
+	#print('1 = leather 0 = wool')
+	#print('preview of label: \n' + str(im_dataset['label']))
 
-#predicted = cross_validation.cross_val_predict(LogisticRegression(),im_dataset['data'],im_dataset['label'], cv=10)
-#print metrics.accuracy_score(im_dataset['label'],predicted)
+	#print('\n=======RESHAPED DATASET=======\n')
+	#Print out dataset 'data' and 'label' sizes
+	#print('dimension of data after reshaping: ' + str(im_dataset['data'].shape))
+	#print('dimension of label after reshaping: ' + str(im_dataset['label'].shape))
 
-#print metrics.classification_report(im_dataset['label'],predicted)
+	print(prediction_label)
+	print(test_lbl)
+	#print(logisticRegr.predict(test_img[38].reshape(1,-1)))
+	print(im_dataset['data'].shape)
+	print(im_dataset['label'].shape)
+	
+	print('\n============RESULTS============\n')
 
-print(confusion_matrix(test_lbl, prediction_label,labels=[0,1]))
-
+	print('dataset file used: ' + str(dataset_used))
+	print('solver used: ' + str(solver_type))
+	print('test_size: ' + str(c_test_size))
+	print('accuracy: ' + str(score))
+	print('time taken(s): ' + str(time.clock() - start))
+	print('test ran on: ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))	
+	
+	
 '''
 # [Logistic Regression Sklearn Documentation](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) <br>
 # One thing I like to mention is the importance of parameter tuning. While it may not have mattered much for the toy digits dataset, it can make a major difference on larger and more complex datasets you have. Please see the parameter: solver
