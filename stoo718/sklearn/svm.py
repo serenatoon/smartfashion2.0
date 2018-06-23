@@ -9,6 +9,7 @@ import glob
 from datetime import datetime
 import time
 from sklearn.metrics import confusion_matrix
+from sklearn.externals import joblib # save svm
 
 
 # feature extraction
@@ -94,6 +95,7 @@ def classify(dir):
     svc = LinearSVC(loss='hinge')
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
+    joblib.dump(svc, "svc.pkl") # save
 
     # confusion matrix 
     prediction_label = svc.predict(x_test[0:52])

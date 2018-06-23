@@ -41,8 +41,8 @@ def get_colour_name(requested_colour):
     return name
 
 
-def main(image):
-    rgb_val = average_image_colour(image)
+def main(filename):
+    rgb_val = average_image_colour(filename)
     print rgb_val
     colour_name = get_colour_name(rgb_val)
     print colour_name
