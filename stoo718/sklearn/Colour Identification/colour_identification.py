@@ -1,9 +1,9 @@
-# https://gist.github.com/olooney/1246268
-
 from PIL import Image
 import sys
+import webcolors
 
-def average_image_color(filename):
+# https://gist.github.com/olooney/1246268
+def average_image_colour(filename):
     i = Image.open(filename)
     h = i.histogram()
 
@@ -21,9 +21,32 @@ def average_image_color(filename):
     )
 
 
+# https://stackoverflow.com/questions/9694165/convert-rgb-color-to-english-color-name-like-green-with-python
+def closest_colour(requested_colour):
+    min_colours = {}
+    for key, name in webcolors.css3_hex_to_names.items():
+        r_c, g_c, b_c = webcolors.hex_to_rgb(key)
+        rd = (r_c - requested_colour[0]) ** 2
+        gd = (g_c - requested_colour[1]) ** 2
+        bd = (b_c - requested_colour[2]) ** 2
+        min_colours[(rd + gd + bd)] = name
+    return min_colours[min(min_colours.keys())]
+
+
+def get_colour_name(requested_colour):
+    try:
+        name = webcolors.rgb_to_name(requested_colour)
+    except ValueError:
+        name = closest_colour(requested_colour)
+    return name
+
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-            print average_image_color(sys.argv[1])
+            rgb_val = average_image_colour(sys.argv[1])
+            print rgb_val
+            colour_name = get_colour_name(rgb_val)
+            print colour_name
     else:
         print 'usage: colour_identification.py FILENAME'
         print 'prints the average color of the image as (R,G,B) where R,G,B are between 0 and 255.'
