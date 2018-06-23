@@ -8,15 +8,16 @@ from skopt import gp_minimize
 import glob
 from datetime import datetime
 import time
+from sklearn.metrics import confusion_matrix
 
 
 # feature extraction
 def colour_hist(input_image, nbins=32):
-    print(input_image[:,:])
-    ch1 = np.histogram(input_image[:,:], bins = nbins, range = (0, 256))[0] # [0] is because we need only the histogram, not bins edges
-    #ch2 = np.histogram(input_image[:,:,1], bins = nbins, range = (0, 256))[0]
-    #ch3 = np.histogram(input_image[:,:,2], bins = nbins, range = (0, 256))[0]
-    return np.hstack(ch1)
+    #print(input_image[:,:])
+    ch1 = np.histogram(input_image[:,:,0], bins = nbins, range = (0, 256))[0] # [0] is because we need only the histogram, not bins edges
+    ch2 = np.histogram(input_image[:,:,1], bins = nbins, range = (0, 256))[0]
+    ch3 = np.histogram(input_image[:,:,2], bins = nbins, range = (0, 256))[0]
+    return np.hstack((ch1, ch2, ch3))
 
 
 def bin_spatial(img, size=(16,16)):
@@ -49,7 +50,7 @@ def get_features(images):
     # iterate through list of images
     for file_p in images:
         file_features = []
-        img = cv2.imread(file_p, 0) # 0 = read as grayscale
+        img = cv2.imread(file_p) # 0 = read as grayscale
 
         feature_img = np.copy(img)
         file_features = get_features_single(feature_img)
@@ -88,12 +89,20 @@ def classify(dir):
 
     # split data into training and test sets
     x_train, x_test, y_train, y_test = train_test_split(scaled_x, y, test_size=0.2)
+    # print scaled_x.shape
+    # print y.shape
     svc = LinearSVC(loss='hinge')
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
+
+    # confusion matrix 
+    prediction_label = svc.predict(x_test[0:52])
+    #print y_test.shape
+    print confusion_matrix(y_test, prediction_label)
+
     t2 = time.time()
-    #print(round(t2-t0, 2), 'seconds to train svc')
-    #print('accuracy of svc: ', round(svc.score(x_test, y_test,), 4))
+    print(round(t2-t0, 2), 'seconds to train svc')
+    print('accuracy of svc: ', round(svc.score(x_test, y_test,), 4))
 
     return round(svc.score(x_test, y_test,), 4)
 
@@ -113,5 +122,5 @@ def iterate(iterations):
 # pos_dir = "res/wool/*"
 # neg_dir = "res/leather/*"
 new_dir = "res/new/*"
-iterate(10)
+iterate(1)
 #classify(pos_dir, neg_dir)

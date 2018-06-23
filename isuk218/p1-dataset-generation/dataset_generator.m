@@ -13,17 +13,18 @@ clc
 clear
 
 % Intialisation
-num_of_images_per_material = 50;
+num_of_images_per_material = 64;
 total_images = 2*num_of_images_per_material;
-size_of_photo = 200; % in pixels
+size_of_photo = 400; % in pixels
 data = zeros(size_of_photo*size_of_photo,total_images); 
 mldata_descr_ordering = {'label', 'data'}; % create key for dataset
+
 for k = 1:total_images
     
     % Loop through total_images files, reads them to image_data and assigns
     % an indexed label based on the type of material
     if k <= num_of_images_per_material
-        file_name = strcat('images\leather (', num2str(k), ').jpg');
+        file_name = strcat('images\leather (', num2str(k), ').png');
         if exist(file_name, 'file')
             image_data = imread(file_name);
             label(1,k) = 1; %1 represents leather
@@ -43,7 +44,6 @@ for k = 1:total_images
         end
     end
     
-    A = imresize(image_data,[size_of_photo size_of_photo]);
     C = rgb2gray(image_data);
     
     for col = 1:size_of_photo
