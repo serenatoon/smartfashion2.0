@@ -27,7 +27,7 @@ def gaussian_each(image):
     return filters.gaussian(image, sigma=2.0)
 
 sobel = sobel_each(img)
-blurred = gaussian_each(sobel)
+blurred = gaussian_each(sobel) #blur this image a bit to make the edges thicker
 
 #step 3: matplotlib settings
 plt.rcParams['image.interpolation'] = 'nearest' #display image without trying to interpolate between pixels if the display resolution is not the same as the image resolution
@@ -35,7 +35,7 @@ plt.rcParams['figure.dpi'] = 80 #set size of the image displayed
 plt.imshow(sobel)
 
 
-plt.imshow(blurred) #blur this image a bit to make the edges thicker
+plt.imshow(blurred) 
 
 
 #step 4: obtaining seeds for the watershed transform
