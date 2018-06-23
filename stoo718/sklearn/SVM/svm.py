@@ -71,23 +71,23 @@ def classify(dir):
 
     for image in images:
         if 'wool' in image:
-            pos_list.append(image)
-        elif 'leather' in image:
             neg_list.append(image)
+        elif 'leather' in image:
+            pos_list.append(image)
 
     # get wool features
-    wool_features = get_features(pos_list)
+    leather_features = get_features(pos_list)
     # get leather features
-    leather_features = get_features(neg_list)
+    wool_features = get_features(neg_list)
 
-    x = np.vstack((wool_features, leather_features)).astype(np.float64)
+    x = np.vstack((leather_features, wool_features)).astype(np.float64)
     print x
     # fit a per-column scaler
     x_scaler = StandardScaler().fit(x)
     # apply the scaler to x
     scaled_x = x_scaler.transform(x)
     # define the labels vector
-    y = np.hstack((np.ones(len(wool_features)), np.zeros(len(leather_features))))
+    y = np.hstack((np.ones(len(leather_features)), np.zeros(len(wool_features))))
 
     # split data into training and test sets
     x_train, x_test, y_train, y_test = train_test_split(scaled_x, y, test_size=0.2)
