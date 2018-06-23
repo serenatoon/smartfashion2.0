@@ -3,7 +3,7 @@ from svm import get_features_single
 import cv2
 import numpy as np
 
-input_image_filename = 'wool2.png'
+input_image_filename = 'leather.png'
 input_image = cv2.imread(input_image_filename)
 img_features = np.concatenate(get_features_single(input_image)).reshape(1,-1)
 

@@ -125,5 +125,5 @@ def iterate(iterations):
 # pos_dir = "res/wool/*"
 # neg_dir = "res/leather/*"
 new_dir = "res/new/*"
-iterate(1)
+#iterate(1)
 #classify(pos_dir, neg_dir)
