@@ -8,7 +8,7 @@ def get_prediction(input_image_filename):
 	input_image = cv2.imread(input_image_filename)
 	img_features = np.concatenate(get_features_single(input_image)).reshape(1,-1)
 
-	svc = joblib.load('svc.pkl')
+	svc = joblib.load('svc2.pkl')
 	prediction_label = svc.predict(img_features[0:1])
 	if (prediction_label[0] == 0):
 		return "leather"

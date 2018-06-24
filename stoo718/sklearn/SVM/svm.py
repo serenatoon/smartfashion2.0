@@ -96,10 +96,10 @@ def classify(dir):
     svc = LinearSVC(loss='hinge')
     t0 = time.time()
     svc.fit(x_train, y_train)  # train
-    joblib.dump(svc, "svc.pkl") # save
+    joblib.dump(svc, "svc2.pkl") # save
 
     # confusion matrix 
-    prediction_label = svc.predict(x_test[0:52])
+    prediction_label = svc.predict(x_test[0:101])
     #print y_test.shape
     print confusion_matrix(y_test, prediction_label)
 
@@ -124,6 +124,6 @@ def iterate(iterations):
 
 # pos_dir = "res/wool/*"
 # neg_dir = "res/leather/*"
-new_dir = "res/new/*"
-iterate(1)
+new_dir = "res/v4/*"
+iterate(10)
 #classify(pos_dir, neg_dir)
