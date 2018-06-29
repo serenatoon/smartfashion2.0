@@ -1,6 +1,31 @@
-from PIL import Image
+from PIL import Image, ImageDraw
 import sys
 import webcolors
+
+
+# https://gist.github.com/zollinger/1722663
+def get_dominant_colour(infile, numcolors=2, swatchsize=20, resize=500):
+
+    image = Image.open(infile)
+    image = image.resize((resize, resize))
+    result = image.convert('P', palette=Image.ADAPTIVE, colors=numcolors)
+    result.putalpha(0)
+    colors = result.getcolors(resize*resize)
+
+    # Save colors to file
+
+    pal = Image.new('RGB', (swatchsize*numcolors, swatchsize))
+    draw = ImageDraw.Draw(pal)
+
+    posx = 0
+    for count, col in colors:
+        draw.rectangle([posx, 0, posx+swatchsize, swatchsize], fill=col)
+        posx = posx + swatchsize
+        del draw
+        return col[0:3]
+
+# dominant_colour = get_dominant_colour("removedbg.png")[0:3]
+# print dominant_colour
 
 # https://gist.github.com/olooney/1246268
 def average_image_colour(filename):
@@ -23,14 +48,21 @@ def average_image_colour(filename):
 
 # https://stackoverflow.com/questions/9694165/convert-rgb-color-to-english-color-name-like-green-with-python
 def closest_colour(requested_colour):
-    min_colours = {}
-    for key, name in webcolors.css3_hex_to_names.items():
-        r_c, g_c, b_c = webcolors.hex_to_rgb(key)
-        rd = (r_c - requested_colour[0]) ** 2
-        gd = (g_c - requested_colour[1]) ** 2
-        bd = (b_c - requested_colour[2]) ** 2
-        min_colours[(rd + gd + bd)] = name
-    return min_colours[min(min_colours.keys())]
+    rg_diff = requested_colour[0] - requested_colour[1]
+    print rg_diff
+    gb_diff = requested_colour[1]-requested_colour[2]
+    print gb_diff
+    if (requested_colour[0] <= 100 and rg_diff <= 23 and rg_diff >= 2 and gb_diff <= 20 and gb_diff >= 7):
+        return "brown"
+    else:
+        min_colours = {}
+        for key, name in webcolors.css3_hex_to_names.items():
+            r_c, g_c, b_c = webcolors.hex_to_rgb(key)
+            rd = (r_c - requested_colour[0]) ** 2
+            gd = (g_c - requested_colour[1]) ** 2
+            bd = (b_c - requested_colour[2]) ** 2
+            min_colours[(rd + gd + bd)] = name
+        return min_colours[min(min_colours.keys())]
 
 
 def get_colour_name(requested_colour):
@@ -58,7 +90,7 @@ def get_english_name(css3_name):
         return "turquoise"
     elif (css3_name == "coral" or css3_name == "darkorange" or css3_name == "lightsalmon" or css3_name == "orangered" or css3_name == "salmon" or css3_name == "sandybrown" or css3_name == "tomato"):
         return "orange"
-    elif (css3_name == "crimson" or css3_name == "firebrick" or css3_name == "indianred"):
+    elif (css3_name == "crimson" or css3_name == "firebrick" or css3_name == "indianred" or css3_name == "red"):
         return "red"
     elif (css3_name == "darkred"):
         return "maroon"
@@ -70,7 +102,7 @@ def get_english_name(css3_name):
         return "gold"
     elif (css3_name == "darkgray" or css3_name == "darkslategray" or css3_name == "dimgray" or css3_name == "gainsboro" or css3_name == "lightgray" or css3_name == "lightslategray" or css3_name == "silver" or css3_name == "slategray"):
         return "grey"
-    elif (css3_name == "darksalmon" or "lightpink" or css3_name == "mistyrose" or css3_name == "rosybrown" or css3_name == "thistle"):
+    elif (css3_name == "darksalmon" or css3_name == "lightpink" or css3_name == "mistyrose" or css3_name == "rosybrown" or css3_name == "thistle"):
         return "light pink"
     elif (css3_name == "deeppink" or css3_name == "fuchsia" or css3_name == "hotpink" or css3_name == "magenta" or css3_name == "orchid" or css3_name == "palevioletred" or css3_name == "violet"):
         return "pink"
@@ -84,22 +116,26 @@ def get_english_name(css3_name):
         return "light blue"
     elif (css3_name == "lightcoral"):
         return "coral"
+    else:
+        return css3_name
 
 
 def identify_colour(filename):
-    rgb_val = average_image_colour(filename)
+    rgb_val = get_dominant_colour(filename)
+    #rgb_val = average_image_colour(filename)
     print rgb_val
     css3_name = get_colour_name(rgb_val)
+    print css3_name
     colour_name = get_english_name(css3_name)
     return colour_name
 
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-            rgb_val = average_image_colour(sys.argv[1])
-            print rgb_val
-            colour_name = get_colour_name(rgb_val)
-            print colour_name
-    else:
-        print 'usage: colour_identification.py FILENAME'
-        print 'prints the average color of the image as (R,G,B) where R,G,B are between 0 and 255.'
+# if __name__ == '__main__':
+#     if len(sys.argv) > 1:
+#             rgb_val = average_image_colour(sys.argv[1])
+#             print rgb_val
+#             colour_name = get_colour_name(rgb_val)
+#             print colour_name
+#     else:
+#         print 'usage: colour_identification.py FILENAME'
+#         print 'prints the average color of the image as (R,G,B) where R,G,B are between 0 and 255.'
