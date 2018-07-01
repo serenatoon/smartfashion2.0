@@ -15,14 +15,14 @@ warnings.filterwarnings("ignore")
 
 fig, subplotArray = plt.subplots(1, 3, sharex=True, sharey=True,  subplot_kw={'adjustable': 'box-forced'})
 
-filetotal = 32
+filetotal = 31
 
 rag_sigma = 230
 slic_sigma = 0.55
 
 
 max_compactness = 130
-max_n_seg = 2000
+max_n_seg = 1800
 max_iter = 10
 runs = 3
 filename = 'wild (10)'
@@ -38,7 +38,7 @@ while fileindex < (filetotal + 1):
 	compactness = 130
 	while compactness < (max_compactness + 1):
 		
-		n_seg = 1500 #1800~2000
+		n_seg = 1800 #1800~2000
 		while n_seg < (max_n_seg + 1):
 			
 			print("----------------------")
