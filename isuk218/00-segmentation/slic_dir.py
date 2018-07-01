@@ -15,27 +15,21 @@ warnings.filterwarnings("ignore")
 
 fig, subplotArray = plt.subplots(1, 3, sharex=True, sharey=True,  subplot_kw={'adjustable': 'box-forced'})
 
-filetotal = 31
-
 rag_sigma = 230
 slic_sigma = 0.55
 
-
-max_compactness = 130
+max_fileindex = 9
+max_compactness = 90
 max_n_seg = 1800
 max_iter = 10
+
 runs = 3
 filename = 'wild (10)'
 
-fileindex = 1
-
-@adapt_rgb(each_channel)
-def sobel_each(image):
-    return filters.sobel(image)
-
-while fileindex < (filetotal + 1):
+fileindex = 8
+while fileindex < (max_fileindex + 1):
 	
-	compactness = 130
+	compactness = 90 #90~130
 	while compactness < (max_compactness + 1):
 		
 		n_seg = 1800 #1800~2000
@@ -48,9 +42,11 @@ while fileindex < (filetotal + 1):
 			print('compactness : ' + str(compactness))
 		
 			#step 1: load the image
-			if (filetotal != 0):
+			if (max_fileindex != 0):
 				filename = 'leather (' + str(fileindex) + ')'
-
+				#filename = 'misc (' + str(fileindex) + ')'
+				
+			#path = 'dataset-not_jackets/' + str(filename) + '.jpg'
 			path = 'dataset-wild-v5/' + str(filename) + '.jpg'
 			img1 = imread(path)
 			print('processing ' + str(filename))
@@ -132,7 +128,7 @@ while fileindex < (filetotal + 1):
 			
 			n_seg += 100
 		
-		compactness += 5	
+		compactness += 10	
 		
 	fileindex += 1
 	
