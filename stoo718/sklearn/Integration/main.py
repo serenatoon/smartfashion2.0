@@ -14,10 +14,12 @@ colour = identify_colour(input_filename)
 print colour
 
 #step 3: get material
-material = get_prediction('cropped.png')
+material = get_prediction('cropped.png', "material")
 print material
 
 # step 4: get type of clothing
+clothing_type = get_prediction(input_filename, "clothing_type")
+print clothing_type
 
 # step 5: web search
 query = colour + " " + material + " jacket"
