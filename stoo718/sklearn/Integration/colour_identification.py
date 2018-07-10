@@ -4,7 +4,7 @@ import webcolors
 
 
 # https://gist.github.com/zollinger/1722663
-def get_dominant_colour(infile, numcolors=2, swatchsize=20, resize=500):
+def get_dominant_colour(infile, numcolors=3, swatchsize=20, resize=500):
 
     image = Image.open(infile)
     image = image.resize((resize, resize))
@@ -21,8 +21,9 @@ def get_dominant_colour(infile, numcolors=2, swatchsize=20, resize=500):
     for count, col in colors:
         draw.rectangle([posx, 0, posx+swatchsize, swatchsize], fill=col)
         posx = posx + swatchsize
-        del draw
-        return col[0:3]
+        if (col[0:3] != (255, 255, 255)):
+            del draw
+            return col[0:3]
 
 # dominant_colour = get_dominant_colour("removedbg.png")[0:3]
 # print dominant_colour
@@ -99,7 +100,7 @@ def get_english_name(css3_name):
     elif (css3_name == "darkcyan" or css3_name == "darkgreen" or css3_name == "darkolivegreen" or css3_name == "mediumseagreen" or css3_name == "olivedrab" or css3_name == "seagreen"):
         return "dark green"
     elif (css3_name == "darkgoldenrod" or css3_name == "goldenrod"):
-        return "gold"
+        return "yellow"
     elif (css3_name == "darkgray" or css3_name == "darkslategray" or css3_name == "dimgray" or css3_name == "gainsboro" or css3_name == "lightgray" or css3_name == "lightslategray" or css3_name == "silver" or css3_name == "slategray"):
         return "grey"
     elif (css3_name == "darksalmon" or css3_name == "lightpink" or css3_name == "mistyrose" or css3_name == "rosybrown" or css3_name == "thistle"):

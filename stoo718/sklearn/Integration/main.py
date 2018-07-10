@@ -4,7 +4,7 @@ from predict import get_prediction
 from amazon_search import do_search
 from slic_dir import remove_background
 
-input_filename = 'leatherjacket.jpg'
+input_filename = 'yellowjacket.jpg'
 
 # step 1: remove background
 remove_background(input_filename)
@@ -15,8 +15,8 @@ sub_img = get_sub_image('removed_bg.png')
 
 # step 3: identify colour
 #colour = identify_colour('sharpened.png')
-#colour = identify_colour('removed_bg.png')
-colour = identify_colour('cropped.png')
+colour = identify_colour('removed_bg.png')
+#colour = identify_colour('cropped.png')
 print colour
 
 #step 4: get material
