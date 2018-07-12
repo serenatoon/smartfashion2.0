@@ -64,7 +64,7 @@ def remove_background(filename):
 				#print("marking boundaries..")
 				slic1_marked = mark_boundaries(img1, slic1)
 
-				fig1 = plt.figure("Image Plot")
+				'''fig1 = plt.figure("Image Plot")
 				sub1 = fig1.add_subplot(1,3,1)
 				sub1.imshow(img1)
 
@@ -72,7 +72,7 @@ def remove_background(filename):
 				sub2.imshow(slic1_bound)
 
 				sub3 = fig1.add_subplot(1,3,3)
-				sub3.imshow(slic1_marked)
+				sub3.imshow(slic1_marked)'''
 
 				#step 5: RAG clustering (Region Adjacency Graph using mean colors)
 				rags = [np.zeros_like(slic1)]*runs
