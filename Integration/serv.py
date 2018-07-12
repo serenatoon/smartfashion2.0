@@ -16,8 +16,8 @@ from predict import get_prediction
 from amazon_search import do_search
 from slic_dir import remove_background
 
-folder = 'dataset-wild-v5'
-input_filename = 'leather (30).jpg'
+folder = 'dataset-not_jackets'
+input_filename = 'misc (20).jpg'
 directory = folder + '/' + input_filename
 
 
@@ -100,14 +100,14 @@ class MainApp(object):
 		try:
 			total_start = time.clock()
 			processImage()
-			Page += "success!\n"
-			Page += 'time taken for bg rmvl (s): ' + str(s1_time) + '\n'
-			Page += 'time taken for sub img extraction (s): ' + str(s2_time) + '\n'
-			Page += 'time taken for colour identification (s): ' + str(s3_time) + '\n'
-			Page += 'time taken for material detection (s): ' + str(s4_time) + '\n'
-			Page += 'time taken for clothing type detection (s): ' + str(s5_time) + '\n'
-			Page += 'time taken for web search (s): ' + str(s6_time) + '\n'
-			Page += 'total time taken (s): ' + str(time.clock() - total_start) + '\n'
+			Page += "success!<br>"
+			Page += 'time taken for bg rmvl (s): ' + str(s1_time) + '<br>'
+			Page += 'time taken for sub img extraction (s): ' + str(s2_time) + '<br>'
+			Page += 'time taken for colour identification (s): ' + str(s3_time) + '<br>'
+			Page += 'time taken for material detection (s): ' + str(s4_time) + '<br>'
+			Page += 'time taken for clothing type detection (s): ' + str(s5_time) + '<br>'
+			Page += 'time taken for web search (s): ' + str(s6_time) + '<br>'
+			Page += 'total time taken (s): ' + str(time.clock() - total_start) + '<br>'
 		except KeyError: 
 			Page += "fail"
 		return Page
