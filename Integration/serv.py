@@ -96,18 +96,18 @@ class MainApp(object):
         return Page
 
     @cherrypy.expose
-    # @cherrypy.tools.json_in()
+    @cherrypy.tools.json_in()
     def receiveFile(self):
         """Implements receiveFile API
         Writes file to local disk and stores in database
         """
         print 'Someone sent you a file! '
-        # data = cherrypy.request.json
-        # file = data['img_data']
+        data = cherrypy.request.json
+        file = data['img_data']
 
-        # # Write to local disk 
-        # with open("test.jpg", "wb") as fh:
-        #     fh.write(file.decode('base64'))
+        # Write to local disk 
+        with open("test.jpg", "wb") as fh:
+            fh.write(file.decode('base64'))
 
 
     # PAGES (which return HTML that can be viewed in browser)
