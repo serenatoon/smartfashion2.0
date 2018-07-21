@@ -35,14 +35,14 @@ listen_ip = "222.155.102.53"
 ext_ip = '222.155.102.53'
 #listen_ip = getIPAddress()
 listen_port = 10008
-webbrowser.open_new('http://localhost:%d/' % (listen_port))
+#webbrowser.open_new('http://localhost:%d/' % (listen_port))
 
-def processImage(): 
+def processImage(input_filename): 
     global s1_time, s2_time, s3_time, s4_time, s5_time, s6_time
     print "starting processing"
     # step 1: remove background 
     s1_start = time.clock()
-    remove_background(directory)
+    remove_background(input_filename)
     # output will be saved to removed_bg.png
     s1_time = time.clock() - s1_start
     
@@ -106,8 +106,10 @@ class MainApp(object):
         file = data['img_data']
 
         # Write to local disk 
-        with open("test.jpg", "wb") as fh:
+        with open("input.jpg", "wb") as fh:
             fh.write(file.decode('base64'))
+
+        processImage('input.jpg')
 
 
     # PAGES (which return HTML that can be viewed in browser)
@@ -118,7 +120,7 @@ class MainApp(object):
 
         # try:
         total_start = time.clock()
-        processImage()
+        #processImage()
         Page += "success!<br>"
         Page += 'time taken for bg rmvl (s): ' + str(s1_time) + '<br>'
         Page += 'time taken for sub img extraction (s): ' + str(s2_time) + '<br>'
