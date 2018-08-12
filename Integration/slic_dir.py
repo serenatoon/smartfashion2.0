@@ -13,7 +13,7 @@ from skimage.future import graph
 import warnings
 warnings.filterwarnings("ignore")
 
-fig, subplotArray = plt.subplots(1, 3, sharex=True, sharey=True,  subplot_kw={'adjustable': 'box-forced'})
+#fig, subplotArray = plt.subplots(1, 3, sharex=True, sharey=True,  subplot_kw={'adjustable': 'box-forced'})
 
 rag_sigma = 230
 slic_sigma = 0.55
@@ -79,8 +79,8 @@ def remove_background(filename):
 				rag_labels = [np.zeros_like(slic1)]*runs
 				rag_marked = [np.zeros_like(img1)]*runs
 
-				subplotArray[0].imshow(slic1_marked)
-				subplotArray[0].set_title('(a)')
+				#subplotArray[0].imshow(slic1_marked)
+				#subplotArray[0].set_title('(a)')
 
 				#used for multiple images
 				i = 0
@@ -105,8 +105,8 @@ def remove_background(filename):
 					areas.append(prop.area)
 					labels_props.append(prop.label)
 
-				subplotArray[1].imshow(rag_marked[i])
-				subplotArray[1].set_title("(b)")
+				#subplotArray[1].imshow(rag_marked[i])
+				#subplotArray[1].set_title("(b)")
 
 				#extract the largest segment
 				def segmentation(img_source, slic_bounds, index):
@@ -118,11 +118,11 @@ def remove_background(filename):
 					return masked_img
 
 				out = segmentation(img1, rag_labels[i], labels_props[areas.index(max(areas))])
-				subplotArray[2].imshow(segmentation(img1, rag_labels[i], labels_props[areas.index(max(areas))]))
-				subplotArray[2].set_title("(c)")
+				#subplotArray[2].imshow(segmentation(img1, rag_labels[i], labels_props[areas.index(max(areas))]))
+				#subplotArray[2].set_title("(c)")
 
-				for a in subplotArray.ravel():
-					a.set_axis_off()
+				'''for a in subplotArray.ravel():
+					a.set_axis_off()'''
 
 				scipy.misc.imsave('removed_bg.png', out)	
 
