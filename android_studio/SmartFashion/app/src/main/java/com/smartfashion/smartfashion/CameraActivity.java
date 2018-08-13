@@ -125,7 +125,6 @@ public class CameraActivity extends AppCompatActivity {
 
     private String getNextGender(String gender){
         switch (gender){
-            //case "Unisex"   : return "Male";
             case "Male"     : return "Female";
             case "Female"   : return "Male";
             default         : return "Female";
