@@ -2,7 +2,6 @@ package com.smartfashion.smartfashion;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +10,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,11 +24,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StreamCorruptedException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static com.smartfashion.smartfashion.R.id.genderButton;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -43,7 +38,6 @@ public class CameraActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
-    //
     public static String status = "";
 
     //Class local variables

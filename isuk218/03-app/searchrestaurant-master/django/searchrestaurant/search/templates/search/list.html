@@ -1,0 +1,100 @@
+{% extends 'search/base.html' %}
+{% load staticfiles %}
+{% block fbsdkblock %} 
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '231384847207103',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+{% endblock %}
+        {% block content %}
+					<div class="mdl-grid">
+            {% if error %} 
+            <div class="mdl-cell-middle mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--2-offset-desktop mdl-cell--12-col-phone">
+            <h4>Nothing found for the given search</h4>
+            </div>
+            {% else %}
+            {% if rlist %}
+             <div class="mdl-cell-middle mdl-cell--8-col mdl-cell--4-offset mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+             <h4 class="align-center">Search result</h4>
+             <div id="spinner" class="mdl-spinner mdl-js-spinner is-active align-center"></div>
+             </div>
+            {% for rest in rlist %}
+	           <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-card mdl-shadow--3dp  mdl-cell--12-col-phone">
+              <div class="mdl-card__media">
+              <a href="{% url 'search:rwithid' rest.venue_id %}">
+                <img src="{{ rest.photo_url }}" style="max-height:300px;">
+                </a>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">{{ rest.name }}</h4>
+              </div>
+              <div class="mdl-card__supporting-text post-excerpt">
+                <span class="mdl-typography--font-light mdl-typography--subhead">
+              {{ rest.address }}
+                </span>
+              </div>   
+              
+              <div class="mdl-card__actions"> 
+                <span class="mdl-badge" data-badge="♥">{{ rest.checkins }}</span>          
+              </div>
+              <div class="mdl-card__actions mdl-card--border post-categories post-tags">
+              <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">
+                {{ rest.r_type }}
+              </a>
+               </div>
+              <div class="mdl-card__menu">
+                <a href="" onclick="fbshare('{{rest.venue_id}}','{{rest.photo_url}}','{{rest.name}}')">
+                  <i class="material-icons" style="color: white;">share</i>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="mdl-cell-middle mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--2-offset-desktop mdl-cell--2-offset-tablet mdl-card mdl-cell--12-col-phone">
+            <h4 class="align-center">Nothing found for the given search</h4>
+            </div>
+            {% endif %}
+
+            {% endif %}
+					</div>
+
+  {% endblock %}
+  {% block jsblock1 %}
+
+    <script>
+      function load() {
+        var spinner = document.getElementById("spinner");
+        console.log("load event detected!");
+        spinner.classList.remove("is-active");
+      }
+      window.onload = load;
+    </script>
+  {% endblock %}
+  {% block fbshare %} 
+<script>
+    function fbshare(venue_id,photo_url,title){
+        FB.ui({
+          method: 'share',
+          href: 'https://searchrestaurant.pythonanywhere.com/restaurant/'+venue_id,
+          picture: photo_url,
+          caption: title,
+        }, function(response){});
+    }
+</script>
+  {% endblock %}
+
+

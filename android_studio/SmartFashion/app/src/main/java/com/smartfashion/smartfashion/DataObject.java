@@ -1,8 +1,5 @@
 package com.smartfashion.smartfashion;
 
-/**
- * Created by mini- on 30/07/2017.
- */
 
 public class DataObject {
     private String mText1;
