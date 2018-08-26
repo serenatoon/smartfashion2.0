@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c36ee17a-ffa7-4ec7-9412-e97b7b754e10" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/API_DOC.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/SearchRestaurant.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/android.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/app.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/build.gradle" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/proguard-rules.pro" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/androidTest/java/co/searchrestaurant/android/app/ApplicationTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/AndroidManifest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/RestaurantDetailActivity.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/RestaurantDetailFragment.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/RestaurantListActivity.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/dummy/DummyContent.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/fetch/GeocodingApi.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/fetch/GeocodingResponse.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/fetch/SearchRestaurantApi.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/java/co/searchrestaurant/android/app/fetch/SearchRestaurantResponse.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout-w900dp/restaurant_list.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/activity_restaurant_detail.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/activity_restaurant_list.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/dialog_search.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/restaurant_detail.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/restaurant_list.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/layout/restaurant_list_content.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/values-v21/styles.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/values/colors.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/values/dimens.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/values/strings.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/main/res/values/styles.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/app/src/test/java/co/searchrestaurant/android/app/ExampleUnitTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/build.gradle" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/gradle.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/gradlew" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/gradlew.bat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/local.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/android/settings.gradle" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/manage.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/requirements.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/admin.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/apps.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/migrations/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/models.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/serializers.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/css/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/css/style_b.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/css/style_yolo.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/css/styles.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/beer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/burger.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/coffee.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/food_kitchen.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/food_main.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/gangneung_bg.jpeg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/hamburger.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/map_marker.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/pizza.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/purple_background.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/red.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/restaurant.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/street_background.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/static/search/images/wine.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/all_list.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/all_list_map.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/base.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/list.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/result.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/single.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/yolo.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/templates/search/yolo_base.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/tests.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/urls.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/search/views.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/searchrestaurant/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/searchrestaurant/settings.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/searchrestaurant/urls.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/django/searchrestaurant/searchrestaurant/wsgi.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/images/devices_before.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/images/ios_1.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/images/website.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Podfile" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Podfile.lock" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/AppDelegate.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/AppIcon.appiconset/Contents.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/Contents.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/mylocation.imageset/Contents.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/mylocation.imageset/ic_my_location_white_36pt.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/mylocation.imageset/ic_my_location_white_36pt_2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/mylocation.imageset/ic_my_location_white_36pt_3x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/place.imageset/Contents.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/place.imageset/ic_place_white_36pt.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/place.imageset/ic_place_white_36pt_2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/place.imageset/ic_place_white_36pt_3x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/search.imageset/Contents.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/search.imageset/ic_search_white_36pt.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/search.imageset/ic_search_white_36pt_2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Assets.xcassets/search.imageset/ic_search_white_36pt_3x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Base.lproj/LaunchScreen.storyboard" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Base.lproj/Main.storyboard" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/Restaurant.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/RestaurantTableViewCell.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/RestaurantTableViewController.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search Restaurant/ViewController.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search RestaurantTests/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search RestaurantTests/Search_RestaurantTests.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search RestaurantUITests/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search RestaurantUITests/Search_RestaurantUITests.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search_Restaurant.xcodeproj/project.pbxproj" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search_Restaurant.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/isuk218/03-app/searchrestaurant-master/ios/Search_Restaurant.xcworkspace/contents.xcworkspacedata" afterPath="" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="37" />
+    <option name="y" value="-4" />
+    <option name="width" value="1329" />
+    <option name="height" value="772" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="AndroidView" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android_studio/SmartFashion" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c36ee17a-ffa7-4ec7-9412-e97b7b754e10" name="Default" comment="" />
+      <created>1535219446195</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1535219446195</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="37" y="-4" width="1883" height="1084" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>
