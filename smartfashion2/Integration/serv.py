@@ -35,7 +35,7 @@ listen_ip = "222.155.102.53"
 ext_ip = '222.155.102.53'
 #listen_ip = getIPAddress()
 listen_port = 10008
-#webbrowser.open_new('http://localhost:%d/' % (listen_port))
+webbrowser.open_new('http://localhost:%d/' % (listen_port))
 
 def processImage(input_filename): 
     global s1_time, s2_time, s3_time, s4_time, s5_time, s6_time
