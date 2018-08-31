@@ -49,7 +49,7 @@ public class CameraActivity extends AppCompatActivity {
     final static String SERVER_PASSWORD = "nadeem";
 
     //API CALLS
-    final static String API_URL = "http://smartfashion.pythonanywhere.com/";
+    final static String API_URL = "http://irasyamira.pythonanywhere.com/";
     final static String PING = "ping";
     final static String PASSWORD = "passwordTest";
     final static String JSON = "randomJson";
@@ -125,11 +125,8 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-
     class StartQuery extends AsyncTask<Void, Void, String> {
-
         private Exception exception;
-
         protected void onPreExecute() {
             bmp = photoCapturedBitmap;
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -138,10 +135,8 @@ public class CameraActivity extends AppCompatActivity {
             encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
             Log.d("IMG Array", encodedImage);
         }
-
         public String doInBackground(Void... urls) {
             try {
-
                 JSONObject json = new JSONObject();
 
                 json.put("device_ID", DEVICE_ID);
@@ -177,6 +172,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 }
                 finally{
+                    //responseView.setText("i cry");
                     urlConnection.disconnect();
                 }
             }
