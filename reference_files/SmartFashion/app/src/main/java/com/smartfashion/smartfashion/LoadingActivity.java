@@ -43,12 +43,14 @@ public class LoadingActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         textView.setText(status);
-                        //goToResults();
                         if (status.equals("accepted")){
-                            status = "finished";
+                            //status = "finished";
+                            Log.d("status", status);
                             goToResults();
-                        }else if(status.equals("error")){
-                            status = "clean";
+                        }
+                        else if (status.equals("error")){
+                            //status = "clean";
+                            Log.d("status", status);
                             goToMain();
                         }
                     }

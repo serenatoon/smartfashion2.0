@@ -45,7 +45,7 @@ public class CameraActivity extends AppCompatActivity {
     private String nextGender;
 
     //Device Variables
-    final static String DEVICE_ID = "MI 5";
+    final static String DEVICE_ID = android.os.Build.MODEL;
     final static String SERVER_PASSWORD = "nadeem";
 
     //API CALLS
@@ -144,7 +144,9 @@ public class CameraActivity extends AppCompatActivity {
                 json.put("image_array", encodedImage);
                 json.put("gender", nextGender );
                 URL url = new URL(API_URL + QUERY);
+                Log.d("url", url.toString());
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                Log.d("urlConnection", urlConnection.toString());
                 urlConnection.setDoOutput(true);
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestProperty("Accept", "application/json");
