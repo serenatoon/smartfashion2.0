@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.net.Uri;
+import android.os.Environment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,13 +24,25 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
+
 
 public class CameraActivity extends AppCompatActivity {
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
+    String imageFilePath;
 
     private static final int ACTIVITY_START_CAMERA_APP = 0;
     private ImageView mPhotCapuredImageView;
@@ -79,18 +94,43 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void takePhoto(View view){
-        Intent callCameraApplicationIntent = new Intent();
-        callCameraApplicationIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(callCameraApplicationIntent, ACTIVITY_START_CAMERA_APP);
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        Uri fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+//        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, fileUri);
+//        //intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+//        startActivityForResult(intent, ACTIVITY_START_CAMERA_APP);
+        File photoFile = null;
+        try {
+            photoFile = createImageFile();
+        }
+        catch (IOException e) {
+            Log.d("createImgFile", "takePhoto: e.toString()");
+        }
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Uri photoUri = FileProvider.getUriForFile(this, "com.smartfashion.fileprovider", photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+        startActivityForResult(intent, ACTIVITY_START_CAMERA_APP);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == ACTIVITY_START_CAMERA_APP && resultCode == RESULT_OK){
-            Bundle extras =data.getExtras();
-            photoCapturedBitmap = (Bitmap) extras.get("data");
-            mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
-            img_flag = true;
+//            Bundle extras =data.getExtras();
+//            photoCapturedBitmap = (Bitmap) extras.get("data");
+//            mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
+//            img_flag = true;
             //Toast.makeText(this, "Picture Taken", Toast.LENGTH_SHORT).show();
+
+            //super.onActivityResult(requestCode, resultCode, data);
+            File file = new File(imageFilePath);
+            try {
+                photoCapturedBitmap = MediaStore.Images.Media.getBitmap(getBaseContext().getContentResolver(), Uri.fromFile(file));
+                mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
+                img_flag = true;
+            }
+            catch (Exception e) {
+                Log.d("onActivityResult", "onActivityResult: " + e.toString());
+            }
+
         }
     }
 
@@ -133,7 +173,7 @@ public class CameraActivity extends AppCompatActivity {
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteArrayImage = stream.toByteArray();
             encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
-            Log.d("IMG Array", encodedImage);
+            //Log.d("IMG Array", encodedImage);
         }
         public String doInBackground(Void... urls) {
             try {
@@ -202,5 +242,60 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
+    /** Create a file Uri for saving an image or video */
+    private static Uri getOutputMediaFileUri(int type){
+        Log.d("test", "getOutputMediaFileUri: " + (Uri.fromFile(getOutputMediaFile(type))).toString());
+        return Uri.fromFile(getOutputMediaFile(type));
+    }
 
+    /** Create a File for saving an image or video */
+    private static File getOutputMediaFile(int type){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "MyCameraApp");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("MyCameraApp", "failed to create directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE){
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "IMG_"+ timeStamp + ".jpg");
+        } else if(type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "VID_"+ timeStamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    private File createImageFile() throws IOException {
+        String timeStamp =
+                new SimpleDateFormat("yyyyMMdd_HHmmss",
+                        Locale.getDefault()).format(new Date());
+        String imageFileName = "IMG_" + timeStamp + "_";
+        File storageDir =
+                getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        imageFilePath = image.getAbsolutePath();
+        return image;
+    }
 }
