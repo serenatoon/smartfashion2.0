@@ -30,10 +30,24 @@ def do_search(query):
 
     for i, product in enumerate(products):
         name = "{0}. {1} ${2}".format(i, product.title, product.list_price[0])
-        print name
+        #print name
+        price = "${0}".format(product.list_price[0])
+        #print price
+        results = {
+            "title": "",
+            "price": "",
+            "img": ""
+        }
 
         # get image
         try:
             urllib.urlretrieve(product.large_image_url, os.path.join(output_dir, name + ".png"))
+            results["title"] = product.title
+            results["price"] = price
+            results["img"] = product.large_image_url
+
+            print results
         except:
             print "Could not retrieve image"
+
+#do_search("black leather jacket")
