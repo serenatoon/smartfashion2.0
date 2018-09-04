@@ -32,6 +32,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.smartfashion.smartfashion.CameraActivity.JSON;
 import static com.smartfashion.smartfashion.CameraActivity.status;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -240,11 +241,15 @@ public class ResultsActivity extends AppCompatActivity {
                 JSONObject object = new JSONObject(response);
 
                 //GET RESULT
-                String responseStatus = object.get("status").toString();
-                String responsePrice = object.get("price").toString();
-                String responseUrl = object.get("url").toString();
-                String responseImage = object.get("image").toString();
-                String responseName = object.get("name").toString();
+                //String responseStatus = object.get("0").get("toString();
+
+                String responsePrice = object.getJSONObject("0").get("price").toString();
+                Log.d("price", "price: " + responsePrice);
+                String responseUrl = object.getJSONObject("0").get("url").toString();
+                String responseImage = object.getJSONObject("0").get("img").toString();
+                String responseName = object.getJSONObject("0").get("title").toString();
+                //String responsePrice = object
+                Log.d("JSON", "onPostExecute: " + object.toString());
 
                 //CREATE RESULT OBJECT
                 ResultObject resultObject = new ResultObject(responseName, responsePrice, responseUrl, responseImage);

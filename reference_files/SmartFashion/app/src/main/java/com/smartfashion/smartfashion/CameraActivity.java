@@ -124,6 +124,12 @@ public class CameraActivity extends AppCompatActivity {
             File file = new File(imageFilePath);
             try {
                 photoCapturedBitmap = MediaStore.Images.Media.getBitmap(getBaseContext().getContentResolver(), Uri.fromFile(file));
+                int height = photoCapturedBitmap.getHeight();
+                int width = photoCapturedBitmap.getWidth();
+                float aspectRatio = (float)width/(float)height;
+                int newWidth = 500;
+                int newHeight = 1000;
+                photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
                 mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
             }
