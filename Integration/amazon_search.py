@@ -2,6 +2,7 @@ from amazon.api import AmazonAPI
 import sys
 import os
 import urllib
+import json
 
 # set encoding to utf8 to avoid UnicodeEncode errors
 reload(sys)
@@ -27,6 +28,14 @@ amazon = AmazonAPI("AKIAIQ4EUAQUFXLIBKYA", "z4REKu6NbtgRQlvJc1Dvb2EfMjx/ycfiUUMZ
 
 def do_search(query):
     products = amazon.search(Keywords=query, SearchIndex='All')
+    results_dict = {
+        0: "",
+        1: "",
+        2: "",
+        3: "",
+        4: ""
+    }
+    results_count = 0
 
     for i, product in enumerate(products):
         name = "{0}. {1} ${2}".format(i, product.title, product.list_price[0])
@@ -36,7 +45,8 @@ def do_search(query):
         results = {
             "title": "",
             "price": "",
-            "img": ""
+            "img": "",
+            "url": ""
         }
 
         # get image
@@ -45,9 +55,14 @@ def do_search(query):
             results["title"] = product.title
             results["price"] = price
             results["img"] = product.large_image_url
-
-            print results
+            results["url"] = product.detail_page_url
+            results_dict[results_count] = results
+            results_count += 1
+            if (results_count >= 5):
+                return results_dict
         except:
             print "Could not retrieve image"
 
-#do_search("black leather jacket")
+results = do_search("black leather jacket")
+js = json.dumps(results, indent=4)
+print js

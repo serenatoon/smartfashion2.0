@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
+import java.io.IOException;
+import java.net.URL;
+
 /**
  * Created by mini- on 30/07/2017.
  */
@@ -47,6 +50,18 @@ public class ResultObject {
         //Log.e("getImageBmp: ", decodedString.toString() );
         Bitmap imageBmp = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return imageBmp;
+//
+//        Bitmap bmp;
+//        try {
+//            URL url = new URL(image);
+//            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//            return bmp;
+//        } catch(IOException e) {
+//            System.out.println(e);
+//        }
+//
+//        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+//        return Bitmap.createBitmap(1, 1, conf); // return some random ass bitmap just so function compiles
     }
 
     public void setImage(String image) {

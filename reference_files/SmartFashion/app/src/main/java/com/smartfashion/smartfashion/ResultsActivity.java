@@ -32,6 +32,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.smartfashion.smartfashion.CameraActivity.JSON;
 import static com.smartfashion.smartfashion.CameraActivity.status;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -231,6 +232,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String response)  {
+            Log.d("RESULT POST EXECUTE", "onPostExecute: ");
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
@@ -238,13 +240,17 @@ public class ResultsActivity extends AppCompatActivity {
             Log.i("INFO", response);
             try{
                 JSONObject object = new JSONObject(response);
+                Log.d("JSON", "onPostExecute: " + object.toString());
 
                 //GET RESULT
-                String responseStatus = object.get("status").toString();
-                String responsePrice = object.get("price").toString();
-                String responseUrl = object.get("url").toString();
-                String responseImage = object.get("image").toString();
-                String responseName = object.get("name").toString();
+                //String responseStatus = object.get("0").get("toString();
+
+                String responsePrice = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("price").toString();
+                //Log.d("price", "price: " + responsePrice);
+                String responseUrl = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("url").toString();
+                String responseImage = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("img").toString();
+                String responseName = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("title").toString();
+                //String responsePrice = object
 
                 //CREATE RESULT OBJECT
                 ResultObject resultObject = new ResultObject(responseName, responsePrice, responseUrl, responseImage);
