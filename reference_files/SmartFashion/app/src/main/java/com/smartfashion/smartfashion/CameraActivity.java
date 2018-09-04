@@ -81,8 +81,8 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        Button gender_button = (Button)findViewById(R.id.genderButton);
-        nextGender = gender_button.getText().toString();
+        //Button gender_button = (Button)findViewById(R.id.genderButton);
+        //nextGender = gender_button.getText().toString();
 
         mPhotCapuredImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
         responseView = (TextView) findViewById(R.id.responseView);
@@ -156,20 +156,20 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     /** Called when the user taps the Gender button */
-    public void cycleGender(View view) {
-        Button gender_button = (Button)findViewById(R.id.genderButton);
-        String currentGender = gender_button.getText().toString();
-        nextGender = getNextGender(currentGender);
-        gender_button.setText(nextGender);
-    }
-
-    private String getNextGender(String gender){
-        switch (gender){
-            case "Male"     : return "Female";
-            case "Female"   : return "Male";
-            default         : return "Female";
-        }
-    }
+//    public void cycleGender(View view) {
+//        Button gender_button = (Button)findViewById(R.id.genderButton);
+//        String currentGender = gender_button.getText().toString();
+//        nextGender = getNextGender(currentGender);
+//        gender_button.setText(nextGender);
+//    }
+//
+//    private String getNextGender(String gender){
+//        switch (gender){
+//            case "Male"     : return "Female";
+//            case "Female"   : return "Male";
+//            default         : return "Female";
+//        }
+//    }
 
     class StartQuery extends AsyncTask<Void, Void, String> {
         private Exception exception;
