@@ -40,7 +40,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
     private final static int NUMBER_RESULTS_MAX = 50;
-    private final static int NUMBER_RESULTS_LOAD = 5;
+    private final static int NUMBER_RESULTS_LOAD = 10;
     private static int NUMBER_RESULTS_TO_LOAD = NUMBER_RESULTS_LOAD;
     private static int NUMBER_RESULTS_LOADED = 0;
 
