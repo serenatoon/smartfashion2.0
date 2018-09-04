@@ -65,14 +65,14 @@ public class ResultsActivity extends AppCompatActivity {
         NUMBER_RESULTS_TO_LOAD = NUMBER_RESULTS_LOAD;
         NUMBER_RESULTS_LOADED = 0;
 
-        loadMoreButton = (FloatingActionButton) findViewById(R.id.loadMoreButton);
-        loadMoreButton.setVisibility(View.INVISIBLE);
-        loadMoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadMore();
-            }
-        });
+//        loadMoreButton = (FloatingActionButton) findViewById(R.id.loadMoreButton);
+//        loadMoreButton.setVisibility(View.INVISIBLE);
+//        loadMoreButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                loadMore();
+//            }
+//        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +138,7 @@ public class ResultsActivity extends AppCompatActivity {
                     Toast.makeText(this, "All Results Returned", Toast.LENGTH_SHORT).show();
                 }
             }else{
-                loadMoreButton.setVisibility(View.VISIBLE);
+                //loadMoreButton.setVisibility(View.VISIBLE);
             }
         }
     }
