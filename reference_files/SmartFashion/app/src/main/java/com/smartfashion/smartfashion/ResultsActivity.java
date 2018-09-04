@@ -232,6 +232,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String response)  {
+            Log.d("RESULT POST EXECUTE", "onPostExecute: ");
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
@@ -239,17 +240,17 @@ public class ResultsActivity extends AppCompatActivity {
             Log.i("INFO", response);
             try{
                 JSONObject object = new JSONObject(response);
+                Log.d("JSON", "onPostExecute: " + object.toString());
 
                 //GET RESULT
                 //String responseStatus = object.get("0").get("toString();
 
-                String responsePrice = object.getJSONObject("0").get("price").toString();
-                Log.d("price", "price: " + responsePrice);
-                String responseUrl = object.getJSONObject("0").get("url").toString();
-                String responseImage = object.getJSONObject("0").get("img").toString();
-                String responseName = object.getJSONObject("0").get("title").toString();
+                String responsePrice = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("price").toString();
+                //Log.d("price", "price: " + responsePrice);
+                String responseUrl = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("url").toString();
+                String responseImage = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("img").toString();
+                String responseName = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("title").toString();
                 //String responsePrice = object
-                Log.d("JSON", "onPostExecute: " + object.toString());
 
                 //CREATE RESULT OBJECT
                 ResultObject resultObject = new ResultObject(responseName, responsePrice, responseUrl, responseImage);
