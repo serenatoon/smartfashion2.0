@@ -4,7 +4,7 @@ from predict import get_prediction
 from amazon_search import do_search
 from slic_dir import remove_background
 
-input_filename = 'yellowjacket.jpg'
+input_filename = 'blackjacket.jpg'
 
 # step 1: remove background
 remove_background(input_filename)
