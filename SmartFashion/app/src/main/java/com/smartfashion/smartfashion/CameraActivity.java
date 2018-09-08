@@ -128,7 +128,7 @@ public class CameraActivity extends AppCompatActivity {
                 int width = photoCapturedBitmap.getWidth();
                 float aspectRatio = (float)width/(float)height;
                 int newWidth = 500;
-                int newHeight = 1000;
+                int newHeight = newWidth*(int)aspectRatio;
                 photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
                 mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
