@@ -124,7 +124,7 @@ def remove_background(filename):
 				for a in subplotArray.ravel():
 					a.set_axis_off()
 
-				scipy.misc.imsave('removed_bg.png', out)	
+				scipy.misc.imsave('removed_bg_misc.png', out)	
 
 				n_seg += 100
 
@@ -132,5 +132,5 @@ def remove_background(filename):
 
 		fileindex += 1
 
-	plt.tight_layout()
-	plt.show()
+	#plt.tight_layout()
+	#plt.show()

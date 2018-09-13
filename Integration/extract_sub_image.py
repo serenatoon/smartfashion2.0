@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 # get 200x200 sub-image, slightly off-center
-def get_sub_image(filename):
+def get_sub_image(filename,save_as):
 	img = Image.open(filename)
 	width, height = img.size
 
@@ -11,7 +11,8 @@ def get_sub_image(filename):
 	left_edge = .55 * width
 	area = (left_edge-200, top_edge, left_edge, top_edge+200)
 
-	sub_img = img.crop(area).save('cropped.png')
+	save_as_name = str(save_as) + '.png'
+	sub_img = img.crop(area).save(save_as_name)
 	sharpen()
 	return sub_img
 

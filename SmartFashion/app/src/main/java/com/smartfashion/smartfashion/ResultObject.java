@@ -3,6 +3,7 @@ package com.smartfashion.smartfashion;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.os.Bundle;
 import android.util.Log;
 
 import java.io.IOException;

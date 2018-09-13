@@ -78,7 +78,7 @@ public class ResultsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            goToMain();
+            goToMain("Results have been returned, back to Home");
             }
         });
 
@@ -164,9 +164,8 @@ public class ResultsActivity extends AppCompatActivity {
         return results;
     }
 
-
-
-    public void goToMain(){
+    public void goToMain(String errorMessage){
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
         Intent intent =  new Intent(this, CameraActivity.class);
         startActivity(intent);
     }

@@ -1,11 +1,9 @@
 package com.smartfashion.smartfashion;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -38,25 +36,25 @@ public class LoadingActivity extends AppCompatActivity {
         super.onResume();
         autoUpdate = new Timer();
         autoUpdate.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        textView.setText(status);
-                        if (status.equals("accepted")){
-                            //status = "finished";
-                            Log.d("status", status);
-                            goToResults();
-                        }
-                        else if (status.equals("error")){
-                            //status = "clean";
-                            Log.d("status", status);
-                            goToMain();
-                        }
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    textView.setText(status);
+                    if (status.equals("accepted")){
+                        status = "finished";
+                        Log.d("status", status);
+                        goToResults();
                     }
-                });
-            }
-        }, 0, 1000); // updates each 40 secs
+                    else if (status.equals("error")){
+                        status = "clean";
+                        Log.d("status", status);
+                        goToMain("Connection request denied by server");
+                    }
+                }
+            });
+        }
+    }, 0, 1000); // updates each 40 secs
     }
 
     @Override
@@ -88,8 +86,8 @@ public class LoadingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToMain(){
-        Toast.makeText(this, "oops something went wrong", Toast.LENGTH_SHORT).show();
+    public void goToMain(String errorMessage){
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
         Intent intent =  new Intent(this, CameraActivity.class);
         startActivity(intent);
     }
@@ -149,7 +147,7 @@ public class LoadingActivity extends AppCompatActivity {
         protected void onPostExecute(String response)  {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
-                goToMain();
+                goToMain("Could not retrieve server response");
             }
             //progressBar.setVisibility(View.GONE);
             Log.i("INFO", response);
@@ -160,7 +158,8 @@ public class LoadingActivity extends AppCompatActivity {
                 //responseView.setText(responseText);
             } catch (JSONException jsonLit){
                 status = "error";
-                goToMain();
+                Log.d("json error here", "jsonderulo" , jsonLit );
+                goToMain("A json exception has occurred");
                 // responseView.setText("EXCEPTION DUN DUN DUN: " + response);
             }
         }

@@ -77,19 +77,26 @@ public class CameraActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // savedInstanceState is non-null when there is fragment state
+        // saved from previous configurations of this activity
+        // (e.g. when rotating the screen from portrait to landscape).
+        // In this case, the fragment will automatically be re-added
+        // to its container so we don't need to manually add it.
+        // For more information, see the Fragments API guide at:
+        //
+        // http://developer.android.com/guide/components/fragments.html
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_camera);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+            //Button gender_button = (Button)findViewById(R.id.genderButton);
+            //nextGender = gender_button.getText().toString();
 
-        //Button gender_button = (Button)findViewById(R.id.genderButton);
-        //nextGender = gender_button.getText().toString();
+            mPhotCapuredImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
+            responseView = (TextView) findViewById(R.id.responseView);
+            progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-        mPhotCapuredImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
-        responseView = (TextView) findViewById(R.id.responseView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        responseView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.INVISIBLE);
+            responseView.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
 
     }
 
@@ -128,7 +135,7 @@ public class CameraActivity extends AppCompatActivity {
                 int width = photoCapturedBitmap.getWidth();
                 float aspectRatio = (float)width/(float)height;
                 int newWidth = 500;
-                int newHeight = newWidth*(int)aspectRatio;
+                int newHeight = newWidth*(int)(aspectRatio);
                 photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
                 mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
@@ -136,20 +143,17 @@ public class CameraActivity extends AppCompatActivity {
             catch (Exception e) {
                 Log.d("onActivityResult", "onActivityResult: " + e.toString());
             }
-
         }
     }
 
     /** Called when the user taps the Send button */
     public void sendImage(View view) {
-        if (img_flag ){
+        if (img_flag){
+            img_flag = false;
             new StartQuery().execute();
             /*mPhotCapuredImageView.setVisibility(View.INVISIBLE);
             responseView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.VISIBLE);*/
-
-            Intent intent =  new Intent(this, LoadingActivity.class);
-            startActivity(intent);
         }else{
             Toast.makeText(this, "Please take an image before sending", Toast.LENGTH_SHORT).show();
         }
@@ -222,6 +226,9 @@ public class CameraActivity extends AppCompatActivity {
                 finally{
                     //responseView.setText("i cry");
                     urlConnection.disconnect();
+                    //i try put here but idk la
+                    Intent intent =  new Intent(getBaseContext(), LoadingActivity.class);
+                    startActivity(intent);
                 }
             }
             catch(Exception e) {
@@ -242,7 +249,7 @@ public class CameraActivity extends AppCompatActivity {
                 status = responseText;
                 responseView.setText(responseText);
             } catch (JSONException jsonLit){
-                status = "error";
+                status = "accepted";
                 responseView.setText("EXCEPTION DUN DUN DUN: " + response);
             }
         }
