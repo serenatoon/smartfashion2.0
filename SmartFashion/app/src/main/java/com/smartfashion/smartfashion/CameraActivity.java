@@ -45,11 +45,13 @@ public class CameraActivity extends AppCompatActivity {
     String imageFilePath;
 
     private static final int ACTIVITY_START_CAMERA_APP = 0;
+    private static final int PICK_IMAGE_REQUEST = 100;
     private ImageView mPhotCapuredImageView;
     private String encodedImage;
     private Bitmap bmp;
     private Bitmap photoCapturedBitmap;
     TextView responseView;
+    private ImageView galleryView;
 
     ProgressBar progressBar;
 
@@ -112,6 +114,12 @@ public class CameraActivity extends AppCompatActivity {
         startActivityForResult(intent, ACTIVITY_START_CAMERA_APP);
     }
 
+    public void pickImage(View view) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == ACTIVITY_START_CAMERA_APP && resultCode == RESULT_OK){
 //            Bundle extras =data.getExtras();
@@ -137,6 +145,18 @@ public class CameraActivity extends AppCompatActivity {
                 Log.d("onActivityResult", "onActivityResult: " + e.toString());
             }
 
+        }
+        else if (requestCode == PICK_IMAGE_REQUEST) {
+            Uri selectedImage = data.getData();
+            try {
+                photoCapturedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, 500, 1000, false);
+                mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
+                img_flag = true;
+            }
+            catch (Exception e) {
+                Log.d("img gallery", "onActivityResult: could not pick image");
+            }
         }
     }
 
@@ -170,6 +190,11 @@ public class CameraActivity extends AppCompatActivity {
 //            default         : return "Female";
 //        }
 //    }
+
+    public void getGalleryImage(View view) {
+        Button galleryButton = (Button)findViewById(R.id.galleryButton);
+
+    }
 
     class StartQuery extends AsyncTask<Void, Void, String> {
         private Exception exception;
