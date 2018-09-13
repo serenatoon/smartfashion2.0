@@ -78,15 +78,16 @@
         android:id="@+id/galleryButton"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="50dp"
-        android:layout_marginStart="200dp"
-        android:text="gallery"
+        android:layout_marginStart="16dp"
         android:onClick="pickImage"
+        android:text="gallery"
         app:layout_constraintBottom_toTopOf="@+id/sendButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toEndOf="@+id/photoButton" />
 
 </android.support.constraint.ConstraintLayout>
