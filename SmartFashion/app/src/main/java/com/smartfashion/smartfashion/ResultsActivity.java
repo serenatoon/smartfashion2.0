@@ -2,21 +2,15 @@ package com.smartfashion.smartfashion;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -31,8 +25,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.net.Uri;
 
-import static com.smartfashion.smartfashion.CameraActivity.JSON;
 import static com.smartfashion.smartfashion.CameraActivity.status;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -58,7 +52,7 @@ public class ResultsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results);
+        setContentView(R.layout.results_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -78,9 +72,11 @@ public class ResultsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            goToMain("Results have been returned, back to Home");
+            goToMain("Back to Home");
             }
         });
+
+
 
 //        resultName = (TextView) findViewById(R.id.resultName);
 //        resultPrice = (TextView) findViewById(R.id.resultPrice);
@@ -150,9 +146,24 @@ public class ResultsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
+                //viewOnAmazon(v, position);
+                //TODO: need to figure out how to get the url from object using the position
+                String amazonUrl = "https://github.com/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(amazonUrl));
+                startActivity(i);
             }
         });
     }
+
+    /** Called when the user taps the result panel */
+    public void viewOnAmazon(View view, Integer position) {
+         String amazonUrl = "https://github.com/";
+         Intent i = new Intent(Intent.ACTION_VIEW);
+         i.setData(Uri.parse(amazonUrl));
+         startActivity(i);
+     }
+
 
     private ArrayList<DataObject> getDataSet() {
         ArrayList results = new ArrayList<DataObject>();
@@ -169,6 +180,8 @@ public class ResultsActivity extends AppCompatActivity {
         Intent intent =  new Intent(this, CameraActivity.class);
         startActivity(intent);
     }
+
+
 
     class GetResult extends AsyncTask<Void, Void, String> {
         private int resultNumber;
@@ -281,3 +294,4 @@ public class ResultsActivity extends AppCompatActivity {
         }
     }
 }
+

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.smartfashion.smartfashion.ResultsActivity"
-    tools:showIn="@layout/activity_results">
+    tools:showIn="@layout/results-activity">
 
     <TextView
         android:layout_width="wrap_content"

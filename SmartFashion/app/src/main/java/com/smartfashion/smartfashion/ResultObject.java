@@ -1,10 +1,13 @@
 package com.smartfashion.smartfashion;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Base64;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +21,28 @@ public class ResultObject {
     private String price;
     private String url;
     private String image;
+
+    /***protected void onCreate(Bundle savedInstanceState) {
+        // savedInstanceState is non-null when there is fragment state
+        // saved from previous configurations of this activity
+        // (e.g. when rotating the screen from portrait to landscape).
+        // In this case, the fragment will automatically be re-added
+        // to its container so we don't need to manually add it.
+        // For more information, see the Fragments API guide at:
+        //
+        // http://developer.android.com/guide/components/fragments.html
+        onCreate(savedInstanceState);
+        setContentView(R.layout.cardviews);
+
+        //Button gender_button = (Button)findViewById(R.id.genderButton);
+        //nextGender = gender_button.getText().toString();
+
+        mPhotCapuredImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
+        responseView = (TextView) findViewById(R.id.responseView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+    }***/
+
 
     ResultObject (String name, String price, String url, String image){
         this.name = name;
@@ -76,4 +101,6 @@ public class ResultObject {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 }
