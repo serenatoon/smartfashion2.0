@@ -56,7 +56,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             //String url = "https://github.com/irasyamira";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
-            //startActivity(i);
+            Log.d("onclick", "onClick: clicked!!!!!");
         }
     }
 

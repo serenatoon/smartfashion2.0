@@ -48,6 +48,8 @@ public class ResultsActivity extends AppCompatActivity {
     private static String LOG_TAG = "CardViewActivity";
     private RecyclerView.LayoutManager mLayoutManager;
 
+    public String[] url = new String[10];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,21 +150,22 @@ public class ResultsActivity extends AppCompatActivity {
                 Log.i(LOG_TAG, " Clicked on Item " + position);
                 //viewOnAmazon(v, position);
                 //TODO: need to figure out how to get the url from object using the position
-                String amazonUrl = "https://github.com/";
+//                String amazonUrl = "https://github.com/";
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(amazonUrl));
+                Log.d("click", "url: " + url[position]);
+                i.setData(Uri.parse(url[position+1]));
                 startActivity(i);
             }
         });
     }
 
     /** Called when the user taps the result panel */
-    public void viewOnAmazon(View view, Integer position) {
-         String amazonUrl = "https://github.com/";
-         Intent i = new Intent(Intent.ACTION_VIEW);
-         i.setData(Uri.parse(amazonUrl));
-         startActivity(i);
-     }
+//    public void viewOnAmazon(View view, Integer position) {
+//         String amazonUrl = "https://github.com/";
+//         Intent i = new Intent(Intent.ACTION_VIEW);
+//         i.setData(Uri.parse(amazonUrl));
+//         startActivity(i);
+//     }
 
 
     private ArrayList<DataObject> getDataSet() {
@@ -260,6 +263,8 @@ public class ResultsActivity extends AppCompatActivity {
                 String responsePrice = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("price").toString();
                 //Log.d("price", "price: " + responsePrice);
                 String responseUrl = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("url").toString();
+                url[NUMBER_RESULTS_LOADED] = responseUrl;
+                Log.d("url", "onPostExecute url: " + url[NUMBER_RESULTS_LOADED]);
                 String responseImage = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("img").toString();
                 String responseName = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("title").toString();
                 //String responsePrice = object

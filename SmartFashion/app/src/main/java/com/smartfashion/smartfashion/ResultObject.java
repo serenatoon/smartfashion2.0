@@ -101,6 +101,11 @@ public class ResultObject {
     public void setUrl(String url) {
         this.url = url;
     }
+//
+//    public void viewOnAmazon(View view) {
+//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.getUrl()));
+//        view.getContext().startActivity(intent);
+//    }
 
 
 }
