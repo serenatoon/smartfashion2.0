@@ -139,7 +139,7 @@ public class CameraActivity extends AppCompatActivity {
                 int width = photoCapturedBitmap.getWidth();
                 float aspectRatio = (float)width/(float)height;
                 int newWidth = 500;
-                int newHeight = newWidth*(int)(aspectRatio);
+                int newHeight = (int) (newWidth/(aspectRatio));
                 photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
                 mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
@@ -152,12 +152,20 @@ public class CameraActivity extends AppCompatActivity {
             Uri selectedImage = data.getData();
             try {
                 photoCapturedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-                photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, 500, 1000, false);
+                int height = photoCapturedBitmap.getHeight();
+                Log.d("height", "height: " + Integer.toString(height));
+                int width = photoCapturedBitmap.getWidth();
+                float aspectRatio = (float)width/(float)height;
+                int newWidth = 500;
+                int newHeight = (int) (newWidth/(aspectRatio));
+                Log.d("aspect ratio", "aspect ratio: " + aspectRatio);
+                Log.d("new height and width", "width, height: " + newWidth + "  " + newHeight);
+                photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
                 mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
             }
             catch (Exception e) {
-                Log.d("img gallery", "onActivityResult: could not pick image");
+                Log.d("img gallery", "onActivityResult: could not pick image: " + e.toString());
             }
         }
     }
@@ -191,10 +199,6 @@ public class CameraActivity extends AppCompatActivity {
 //        }
 //    }
 
-    public void getGalleryImage(View view) {
-        Button galleryButton = (Button)findViewById(R.id.galleryButton);
-
-    }
 
     class StartQuery extends AsyncTask<Void, Void, String> {
         private Exception exception;
