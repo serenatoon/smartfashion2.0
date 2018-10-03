@@ -178,6 +178,7 @@ public class CameraActivity extends AppCompatActivity {
             /*mPhotCapuredImageView.setVisibility(View.INVISIBLE);
             responseView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.VISIBLE);*/
+            Toast.makeText(this, "Your image is being processed", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Please take an image before sending", Toast.LENGTH_SHORT).show();
         }
