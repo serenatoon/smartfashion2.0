@@ -80,7 +80,27 @@ This folder contains the script used during development of the Amazon web search
 2. If desired, modify `black leather jacket` on Line 27 to the desired query.
 3. Execute `python amazon.search.py`.
 
-## Back End
+## Backend
+
+This folder contains all files used in the computation done on the server side.  It integrates all folders/steps mentioned above, except for the `LR - Material Detection` folder.
+
+- `amazon_search.py`: See `Web Search` section.
+- `colour_identification.py`: See `Colour Identification` section.
+- `extract_sub_image.py`: See `Colour Identification` section.
+- `j6885a-classic-leather-jacket-blk-leather-b.jpg`, `leather (10).jpg`, `leatherjacket.jpg`, `yellowjacket.jpg`: Files used for testing.
+- `main.py`: The main script which should be run.
+- `predict.py`: See `SVM - Material Detection` section.
+- `serv.py`: Script hosting the backend locally.
+- `slic_dir.py`: See `Background Removal` section.
+- `svc.pkl`, `svc_jacket.pkl`, `svc2.pkl`: SVMs used.
+- `svm.py`: See `SVM - Material Detection` section.
+
+### How to run `main.py`
+1. Navigate to `Backend/` in Terminal.
+2. If desired, modify `yellowjacket.jpg` on Line 7 to desired input image.
+3. Execute `python main.py`.
+
+## Server-side Backend
 
 This folder contains the scripts hosted on PythonAnywhere to form the back-end of the Smartfashion system. This folder contains 7 .py scripts, 1 .txt file and 2 .pkl files:
 
