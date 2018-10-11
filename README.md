@@ -74,3 +74,11 @@ This folder contains the project files used to develop the Smartfashion mobile a
 
 1. Open Android Studio
 2. Open Project and select the Smartfashion project within this directory
+
+## Datasets
+
+This folder contains the datasets that have been used to train and/or test our machine learning models.
+
+- `Initial Material Dataset`: The initial materials dataset which was used to train our machine learning models used for identifying material.
+- `Final Material Dataset`: The final materials dataset which was used to train our machine learning models used for identifying material.
+- `Jacket Dataset`: The dataset used to train the SVM used for clothing type.
