@@ -22,7 +22,7 @@
             android:name=".ResultsActivity"
             android:label="@string/title_activity_results"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoadingActivity"></activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.smartfashion.fileprovider"

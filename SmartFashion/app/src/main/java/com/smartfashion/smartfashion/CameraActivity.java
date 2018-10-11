@@ -253,7 +253,7 @@ public class CameraActivity extends AppCompatActivity {
                     //responseView.setText("i cry");
                     urlConnection.disconnect();
                     //i try put here but idk la
-                    Intent intent =  new Intent(getBaseContext(), LoadingActivity.class);
+                    Intent intent =  new Intent(getBaseContext(), ResultsActivity.class);
                     startActivity(intent);
                 }
             }
