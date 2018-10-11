@@ -52,6 +52,34 @@ This folder contains the script used for the generation of the SVM used for clot
 2. If desired, change `new_dir` at the bottom of the script to point to the desired dataset.  This is the dataset that will be used to train the SVM.
 3. Execute `python svm.py`.  Observe that `svc2.pkl` has been generated.  Accuracy and confusion matrix will be printed to terminal.
 
+## Colour Identification
+
+This folder contains the files used for the development of *colour identification*.  It contains several images that have and be used for testing.
+
+- `blue.png`, `green.png`, `red.png`: Images of solid colours.  Used for verification of colour identification.
+- `blue_leather.png`, `brown_leather.png`: Images of leather.  Used to verify that colour identification works with materials.
+- `colour_identification.py`: Conducts colour identification.
+- `extract_sub_image.py`: Crops a pre-defined area from an image.
+
+### How to run `colour_identification.py`:
+1. Navigate to `Colour Identification/` in Terminal.
+2. Execute `python colour_identification.py [FILENAME]`, wherein `[FILENAME]` should be your desired input file.  This can be any of the `PNG` files in this directory.
+
+### How to run `extract_sub_image.py`:
+1. Naavigate to `Colour Identification/` in Terminal.
+2. If desired, modify `brown_jacket.png` at the bottom of the file to the desired image file you would like to extract a sub-image from.
+3. Execute `python extract_sub_image.py`.
+
+## Web Search
+This folder contains the script used during development of the Amazon web search functionality.
+
+- `amazon_search.py`: Script which performs the Amazon search.
+
+### How to run `amazon_search.py`:
+1. Navigate to `Web Search/` in Terminal.
+2. If desired, modify `black leather jacket` on Line 27 to the desired query.
+3. Execute `python amazon.search.py`.
+
 ## Back End
 
 This folder contains the scripts hosted on PythonAnywhere to form the back-end of the Smartfashion system. This folder contains 7 .py scripts, 1 .txt file and 2 .pkl files:
