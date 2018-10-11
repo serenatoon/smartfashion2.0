@@ -16,10 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.net.Uri;
 import android.os.Environment;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -34,44 +32,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
 public class CameraActivity extends AppCompatActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
     String imageFilePath;
-
     private static final int ACTIVITY_START_CAMERA_APP = 0;
     private static final int PICK_IMAGE_REQUEST = 100;
-    private ImageView mPhotCapuredImageView;
+    private ImageView mPhotoCapturedImageView;
     private String encodedImage;
     private Bitmap bmp;
     private Bitmap photoCapturedBitmap;
     TextView responseView;
-    private ImageView galleryView;
 
     ProgressBar progressBar;
 
     public static String status = "";
 
-    //Class local variables
+
     private boolean img_flag = false;
-    private String nextGender;
-
-    //Device Variables
     final static String DEVICE_ID = android.os.Build.MODEL;
-    final static String SERVER_PASSWORD = "nadeem";
-
-    //API CALLS
+    final static String SERVER_PASSWORD = "hello world";
+    
     final static String API_URL = "http://irasyamira.pythonanywhere.com/";
-    final static String PING = "ping";
-    final static String PASSWORD = "passwordTest";
-    final static String JSON = "randomJson";
     final static String QUERY = "startQuery";
-    final static String CLOSE = "closeQuery";
-    final static String STATUS = "getStatusUpdate";
-    final static String SET_IMAGE = "setImage";
     final static String GET_RESULT = "getResult";
-    final static String GET_IMAGE = "getImage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +70,7 @@ public class CameraActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.camera_activity);
 
-            //Button gender_button = (Button)findViewById(R.id.genderButton);
-            //nextGender = gender_button.getText().toString();
-
-            mPhotCapuredImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
+            mPhotoCapturedImageView = (ImageView) findViewById(R.id.capturePhotoImageView);
             responseView = (TextView) findViewById(R.id.responseView);
             progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -99,11 +80,6 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void takePhoto(View view){
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        Uri fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-//        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, fileUri);
-//        //intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-//        startActivityForResult(intent, ACTIVITY_START_CAMERA_APP);
         File photoFile = null;
         try {
             photoFile = createImageFile();
@@ -125,13 +101,6 @@ public class CameraActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == ACTIVITY_START_CAMERA_APP && resultCode == RESULT_OK){
-//            Bundle extras =data.getExtras();
-//            photoCapturedBitmap = (Bitmap) extras.get("data");
-//            mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
-//            img_flag = true;
-            //Toast.makeText(this, "Picture Taken", Toast.LENGTH_SHORT).show();
-
-            //super.onActivityResult(requestCode, resultCode, data);
             File file = new File(imageFilePath);
             try {
                 photoCapturedBitmap = MediaStore.Images.Media.getBitmap(getBaseContext().getContentResolver(), Uri.fromFile(file));
@@ -141,7 +110,7 @@ public class CameraActivity extends AppCompatActivity {
                 int newWidth = 500;
                 int newHeight = (int) (newWidth/(aspectRatio));
                 photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
-                mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
+                mPhotoCapturedImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
             }
             catch (Exception e) {
@@ -161,7 +130,7 @@ public class CameraActivity extends AppCompatActivity {
                 Log.d("aspect ratio", "aspect ratio: " + aspectRatio);
                 Log.d("new height and width", "width, height: " + newWidth + "  " + newHeight);
                 photoCapturedBitmap = Bitmap.createScaledBitmap(photoCapturedBitmap, newWidth, newHeight, false);
-                mPhotCapuredImageView.setImageBitmap(photoCapturedBitmap);
+                mPhotoCapturedImageView.setImageBitmap(photoCapturedBitmap);
                 img_flag = true;
             }
             catch (Exception e) {
@@ -175,31 +144,11 @@ public class CameraActivity extends AppCompatActivity {
         if (img_flag){
             img_flag = false;
             new StartQuery().execute();
-            /*mPhotCapuredImageView.setVisibility(View.INVISIBLE);
-            responseView.setVisibility(View.VISIBLE);
-            progressBar.setVisibility(View.VISIBLE);*/
             Toast.makeText(this, "Your image is being processed", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Please take an image before sending", Toast.LENGTH_SHORT).show();
         }
     }
-
-    /** Called when the user taps the Gender button */
-//    public void cycleGender(View view) {
-//        Button gender_button = (Button)findViewById(R.id.genderButton);
-//        String currentGender = gender_button.getText().toString();
-//        nextGender = getNextGender(currentGender);
-//        gender_button.setText(nextGender);
-//    }
-//
-//    private String getNextGender(String gender){
-//        switch (gender){
-//            case "Male"     : return "Female";
-//            case "Female"   : return "Male";
-//            default         : return "Female";
-//        }
-//    }
-
 
     class StartQuery extends AsyncTask<Void, Void, String> {
         private Exception exception;
@@ -209,7 +158,6 @@ public class CameraActivity extends AppCompatActivity {
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] byteArrayImage = stream.toByteArray();
             encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
-            //Log.d("IMG Array", encodedImage);
         }
         public String doInBackground(Void... urls) {
             try {
@@ -218,7 +166,6 @@ public class CameraActivity extends AppCompatActivity {
                 json.put("device_ID", DEVICE_ID);
                 json.put("password", SERVER_PASSWORD);
                 json.put("image_array", encodedImage);
-                json.put("gender", nextGender );
                 URL url = new URL(API_URL + QUERY);
                 Log.d("url", url.toString());
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -250,9 +197,7 @@ public class CameraActivity extends AppCompatActivity {
 
                 }
                 finally{
-                    //responseView.setText("i cry");
                     urlConnection.disconnect();
-                    //i try put here but idk la
                     Intent intent =  new Intent(getBaseContext(), ResultsActivity.class);
                     startActivity(intent);
                 }
@@ -276,7 +221,7 @@ public class CameraActivity extends AppCompatActivity {
                 responseView.setText(responseText);
             } catch (JSONException jsonLit){
                 status = "accepted";
-                responseView.setText("EXCEPTION DUN DUN DUN: " + response);
+                responseView.setText("an exception has occurred: " + response);
             }
         }
     }

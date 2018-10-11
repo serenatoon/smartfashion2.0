@@ -23,7 +23,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import android.net.Uri;
 
@@ -33,8 +32,7 @@ public class ResultsActivity extends AppCompatActivity {
     private Context context;
 
 
-    private final static int NUMBER_RESULTS_MAX = 50;
-    private final static int NUMBER_RESULTS_LOAD = 10;
+    private final static int NUMBER_RESULTS_LOAD = 20;
     private static int NUMBER_RESULTS_TO_LOAD = NUMBER_RESULTS_LOAD;
     private static int NUMBER_RESULTS_LOADED = 0;
 
@@ -42,14 +40,12 @@ public class ResultsActivity extends AppCompatActivity {
     private boolean getResultDone = true;
     private boolean limit_reached = false;
 
-    private FloatingActionButton loadMoreButton;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private static String LOG_TAG = "CardViewActivity";
     private RecyclerView.LayoutManager mLayoutManager;
 
     public String[] url = new String[10];
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,68 +57,26 @@ public class ResultsActivity extends AppCompatActivity {
         NUMBER_RESULTS_TO_LOAD = NUMBER_RESULTS_LOAD;
         NUMBER_RESULTS_LOADED = 0;
 
-//        loadMoreButton = (FloatingActionButton) findViewById(R.id.loadMoreButton);
-//        loadMoreButton.setVisibility(View.INVISIBLE);
-//        loadMoreButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loadMore();
-//            }
-//        });
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            goToMain("Back to Home");
+                goToMain("Back to Home");
             }
         });
 
-
-
-//        resultName = (TextView) findViewById(R.id.resultName);
-//        resultPrice = (TextView) findViewById(R.id.resultPrice);
-//        resultImage = (ImageView) findViewById(R.id.resultImage);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        //mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-//        mLayoutManager = new LinearLayoutManager(this);
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        //new GetResult().execute();
-
         mAdapter = new MyRecyclerViewAdapter(results, NUMBER_RESULTS_LOADED);
         mRecyclerView.setAdapter(mAdapter);
-
 
         new GetResult(NUMBER_RESULTS_LOADED).execute();
         NUMBER_RESULTS_LOADED++;
 
-
-       /* int i = 0;
-        while (i < NUMBER_RESULTS_LOAD){
-            if (getResultDone){
-                getResultDone = false;
-
-                i++;
-            }
-        }*/
-    }
-
-    private void loadMore(){
-        NUMBER_RESULTS_TO_LOAD = NUMBER_RESULTS_TO_LOAD + NUMBER_RESULTS_LOAD;
-        getMoreResults();
-        loadMoreButton.setVisibility(View.INVISIBLE);
     }
 
     private void getMoreResults(){
@@ -135,8 +89,6 @@ public class ResultsActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(this, "All Results Returned", Toast.LENGTH_SHORT).show();
                 }
-            }else{
-                //loadMoreButton.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -157,25 +109,6 @@ public class ResultsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
-
-    /** Called when the user taps the result panel */
-//    public void viewOnAmazon(View view, Integer position) {
-//         String amazonUrl = "https://github.com/";
-//         Intent i = new Intent(Intent.ACTION_VIEW);
-//         i.setData(Uri.parse(amazonUrl));
-//         startActivity(i);
-//     }
-
-
-    private ArrayList<DataObject> getDataSet() {
-        ArrayList results = new ArrayList<DataObject>();
-        for (int index = 0; index < 20; index++) {
-            DataObject obj = new DataObject("Some Primary Text " + index,
-                    "Secondary " + index);
-            results.add(index, obj);
-        }
-        return results;
     }
 
     public void goToMain(String errorMessage){
@@ -233,9 +166,7 @@ public class ResultsActivity extends AppCompatActivity {
                     bufferedReader.close();
                     return stringBuilder.toString();
 
-                }/*catch (Exception e){
-                    limit_reached = true;
-                }*/
+                }
                 finally{
                     urlConnection.disconnect();
                 }
@@ -267,7 +198,6 @@ public class ResultsActivity extends AppCompatActivity {
                 Log.d("url", "onPostExecute url: " + url[NUMBER_RESULTS_LOADED]);
                 String responseImage = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("img").toString();
                 String responseName = object.getJSONObject(Integer.toString(NUMBER_RESULTS_LOADED)).get("title").toString();
-                //String responsePrice = object
 
                 //CREATE RESULT OBJECT
                 ResultObject resultObject = new ResultObject(responseName, responsePrice, responseUrl, responseImage);
@@ -279,21 +209,11 @@ public class ResultsActivity extends AppCompatActivity {
                 mAdapter = new MyRecyclerViewAdapter(results, NUMBER_RESULTS_LOADED);
                 mRecyclerView.setAdapter(mAdapter);
 
-                //myDataset[0] = object.get("price").toString();
-
-
-               /* resultPrice.setText(responsePrice);
-                resultName.setText(responseName);
-                resultImage.setImageBitmap(returnedBmp);*/
-                //status = responseText;
-
-                //responseView.setText(responseText);
             } catch (JSONException jsonLit){
                 limit_reached = true;
                 status = "error";
-                // responseView.setText("EXCEPTION DUN DUN DUN: " + response);
+                //goToMain("An exception has occurred");
             }
-
             getResultDone = true;
             getMoreResults();
         }

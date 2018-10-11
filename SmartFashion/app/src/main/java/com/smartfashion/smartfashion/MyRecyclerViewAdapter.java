@@ -1,6 +1,5 @@
 package com.smartfashion.smartfashion;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -10,26 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-
-/**
- * Created by mini- on 30/07/2017.
- */
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.DataObjectHolder> {
 
     private static String LOG_TAG = "MyRecyclerViewAdapter";
     private HashMap mResults;
     private Integer mResultsNumber;
-    private Context mContext;
-    private ArrayList<DataObject> mDataset;
     private static MyClickListener myClickListener;
-
-    MyRecyclerViewAdapter(DataObjectHolder holder, int position){
-
-    }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
@@ -38,7 +25,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView priceLabel;
         ImageView resultImage;
         String url;
-        private Context context;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
@@ -90,18 +76,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.url = resultObject.getUrl();
     }
 
-
-    public void addItem(DataObject dataObj, int index) {
-        mDataset.add(index, dataObj);
-        notifyItemInserted(index);
-    }
-
-    public void deleteItem(int index) {
-        mResults.remove(index);
-        notifyItemRemoved(index);
-    }
-
-    @Override
+        @Override
     public int getItemCount() {
         Log.e("RESULT", Integer.toString(mResults.size()));
         if (mResults.size() == 1){
@@ -112,7 +87,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     public interface MyClickListener {
-        public void onItemClick(int position, View v);
+        void onItemClick(int position, View v);
 
     }
 }
